@@ -182,6 +182,8 @@ Route::controller(PropertyController::class)->group(function(){
 
      Route::post('/update/property/thambnail', 'UpdatePropertyThambnail')->name('update.property.thambnail');
 
+     Route::post('/update/property/video', 'UpdatePropertyVideo')->name('update.property.video');
+
       Route::post('/update/property/multiimage', 'UpdatePropertyMultiimage')->name('update.property.multiimage');
 
     Route::get('/property/multiimg/delete/{id}', 'PropertyMultiImageDelete')->name('property.multiimg.delete');
@@ -203,6 +205,8 @@ Route::controller(PropertyController::class)->group(function(){
        Route::get('/package/invoice/{id}', 'PackageInvoice')->name('package.invoice');
 
        Route::get('/admin/property/message/', 'AdminPropertyMessage')->name('admin.property.message');
+
+      
 
 });
 
@@ -483,3 +487,14 @@ Route::controller(AgentPropertyController::class)->group(function(){
 
  Route::get('/agent/live/chat', [ChatController::class, 'AgentLiveChat'])->name('agent.live.chat');
 
+
+
+
+
+  // notification route 
+Route::controller(PropertyController::class)->group(function(){
+
+     Route::post('/mark-notification-as-read/{notification}', 'MarkAsRead');
+     
+
+});

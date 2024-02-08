@@ -159,12 +159,24 @@
                 <input type="text" name="property_size"  class="form-control" >
             </div>
         </div><!-- Col -->
+       
+
         <div class="col-sm-4">
-            <div class="mb-3">
-                <label class="form-label">Property Video</label>
-                <input type="text" name="property_video"  class="form-control" >
-            </div>
-        </div><!-- Col -->
+    <div class="form-group mb-3">
+        <label class="form-label">Property Video</label>
+        <input type="file" name="property_video" class="form-control" onChange="mainVideoUrl(this)">
+
+        <video controls id="mainVideo" style="max-width: 50%; height: auto;">
+            <!-- Provide a default source with a blank value -->
+            <source src="" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div><!-- Col -->
+
+
+
+
         <div class="col-sm-4">
             <div class="mb-3">
                 <label class="form-label">Neighborhood</label>
@@ -183,14 +195,14 @@
             <div class="mb-3">
                 <label class="form-label">Latitude</label>
                 <input type="text" name="latitude" class="form-control" >
-                <a href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank">Go here to get Latitude from address</a>
+                <a href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank">Click here to get Latitude from address</a>
             </div>
         </div><!-- Col -->
         <div class="col-sm-6">
             <div class="mb-3">
                 <label class="form-label">Longitude</label>
                 <input type="text" name="longitude" class="form-control" >
-                 <a href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank">Go here to get Longitude from address</a>
+                 <a href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank">Click here to get Longitude from address</a>
             </div>
         </div><!-- Col -->
     </div><!-- Row -->
@@ -469,6 +481,24 @@
         }
     } 
  </script>
+
+<script type="text/javascript">
+    function mainVideoUrl(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                // Set the source of the video
+                $('#mainVideo source').attr('src', e.target.result);
+                
+                // Reload the video element to apply the changes
+                $('#mainVideo')[0].load();
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 
 
  <script> 

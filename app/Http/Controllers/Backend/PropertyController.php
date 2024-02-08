@@ -17,6 +17,9 @@ use App\Models\PackagePlan;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\PropertyMessage;
 use App\Models\State;
+use App\Notifications\NewProperty;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class PropertyController extends Controller
 {
@@ -42,11 +45,20 @@ class PropertyController extends Controller
 
     public function StoreProperty(Request $request){
 
+        
+
         $amen = $request->amenities_id;
         $amenites = implode(",", $amen);
         // dd($amenites);
 
         $pcode = IdGenerator::generate(['table' => 'properties','field' => 'property_code','length' => 5, 'prefix' => 'PC' ]);
+        
+
+        $video = $request->file('property_video');
+        $videoName = hexdec(uniqid()) . '.' . $video->getClientOriginalExtension();
+        $video->move('upload/property/videos/', $videoName); // Save the video file
+
+
 
 
         $image = $request->file('property_thambnail');
@@ -73,7 +85,6 @@ class PropertyController extends Controller
             'garage_size' => $request->garage_size,
 
             'property_size' => $request->property_size,
-            'property_video' => $request->property_video,
             'address' => $request->address,
             'city' => $request->city,
             'state' => $request->state,
@@ -87,6 +98,7 @@ class PropertyController extends Controller
             'agent_id' => $request->agent_id,
             'status' => 1,
             'property_thambnail' => $save_url,
+            'property_video' => 'upload/property/videos/' . $videoName, // Store the correct file path or URL
             'created_at' => Carbon::now(), 
         ]);
 
@@ -125,6 +137,8 @@ class PropertyController extends Controller
         }
 
          /// End Facilities  ////
+
+         
 
 
             $notification = array(
@@ -238,6 +252,35 @@ class PropertyController extends Controller
         return redirect()->back()->with($notification); 
 
     }// End Method 
+
+
+    public function UpdatePropertyVideo(Request $request)
+{
+    $pro_id = $request->id;
+    $oldVideo = $request->old_video;
+
+    $video = $request->file('property_video');
+    $videoName = hexdec(uniqid()) . '.' . $video->getClientOriginalExtension();
+    $video->move('upload/property/videos/', $videoName);
+
+    if (file_exists($oldVideo)) {
+        unlink($oldVideo);
+    }
+
+    Property::findOrFail($pro_id)->update([
+        'property_video' => 'upload/property/videos/' . $videoName,
+        'updated_at' => Carbon::now(),
+    ]);
+
+    $notification = array(
+        'message' => 'Property Video Updated Successfully',
+        'alert-type' => 'success'
+    );
+
+    return redirect()->back()->with($notification);
+}
+
+    
 
 
     public function UpdatePropertyMultiimage(Request $request){
@@ -466,6 +509,22 @@ class PropertyController extends Controller
         return view('backend.message.all_message',compact('usermsg'));
 
     }// End Method  
+
+
+
+
+    public function MarkAsRead(Request $request , $notificationId){
+
+        $user = Auth::user();
+        $notification = $user->notifications()->where('id',$notificationId)->first();
+
+        if ($notification) {
+            $notification->markAsRead();
+        }
+
+  return response()->json(['count' => $user->unreadNotifications()->count()]);
+
+     }// End Method 
 
 
 } 

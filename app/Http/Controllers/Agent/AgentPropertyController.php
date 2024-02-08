@@ -22,6 +22,8 @@ use App\Models\State;
 use App\Models\Schedule;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ScheduleMail;
+use App\Notifications\NewProperty;
+use Illuminate\Support\Facades\Notification;
    
 class AgentPropertyController extends Controller
 {
@@ -58,6 +60,8 @@ class AgentPropertyController extends Controller
 
 
      public function AgentStoreProperty(Request $request){
+
+        
 
         $id = Auth::user()->id;
         $uid = User::findOrFail($id);
@@ -151,6 +155,11 @@ class AgentPropertyController extends Controller
         User::where('id',$id)->update([
             'credit' => DB::raw('1 + '.$nid),
         ]);
+
+       
+
+        $user = User::where('role','admin')->get();
+        Notification::send($user, new NewProperty($request->state));
 
 
             $notification = array(
@@ -591,6 +600,9 @@ public function AgentUpdatePropertyThambnail(Request $request){
 
 
     }// End Method 
+
+
+    
 
 
 } 
