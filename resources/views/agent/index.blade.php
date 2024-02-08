@@ -1,10 +1,16 @@
 @extends('agent.agent_dashboard')
 @section('agent')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 @php
 $id = Auth::user()->id;
 $agentId = App\Models\User::find($id);
 $status = $agentId->status;
+$totalProperty = App\Models\Property::where('agent_id', $id)->latest()->get();
+$sRequest = App\Models\Schedule::where('agent_id',$id)->latest()->get();
+$usermsg = App\Models\Schedule::where('agent_id',$id)->get();
+$property = App\Models\Property::where('agent_id',$id)->latest()->get();
 @endphp
 
  <div class="page-content">
@@ -47,22 +53,11 @@ $status = $agentId->status;
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-baseline">
                       <h6 class="card-title mb-0">Total Property</h6>
-                      <div class="dropdown mb-2">
-                        <a type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
-                        </div>
-                      </div>
+                     
                     </div>
                     <div class="row">
                       <div class="col-6 col-md-12 col-xl-5">
-                        <h3 class="mb-2">3,897</h3>
+                        <h3 class="mb-2">{{ count($totalProperty) }}</h3>
                         <div class="d-flex align-items-baseline">
                           <p class="text-success">
                             <span>+3.3%</span>
@@ -81,23 +76,12 @@ $status = $agentId->status;
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-baseline">
-                      <h6 class="card-title mb-0">New Orders</h6>
-                      <div class="dropdown mb-2">
-                        <a type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
-                        </div>
-                      </div>
+                      <h6 class="card-title mb-0">Schedule Request</h6>
+                    
                     </div>
                     <div class="row">
                       <div class="col-6 col-md-12 col-xl-5">
-                        <h3 class="mb-2">35,084</h3>
+                        <h3 class="mb-2">{{ count($sRequest) }}</h3>
                         <div class="d-flex align-items-baseline">
                           <p class="text-danger">
                             <span>-2.8%</span>
@@ -112,23 +96,14 @@ $status = $agentId->status;
                   </div>
                 </div>
               </div>
+
+              
               <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-baseline">
                       <h6 class="card-title mb-0">Growth</h6>
-                      <div class="dropdown mb-2">
-                        <a type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
-                          <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
-                        </div>
-                      </div>
+                      
                     </div>
                     <div class="row">
                       <div class="col-6 col-md-12 col-xl-5">
@@ -143,7 +118,7 @@ $status = $agentId->status;
                       <div class="col-6 col-md-12 col-xl-7">
                         <div id="growthChart" class="mt-md-3 mt-xl-0"></div>
                       </div>
-                    </div>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -157,27 +132,18 @@ $status = $agentId->status;
             <div class="card">
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-baseline mb-2">
-                  <h6 class="card-title mb-0">Monthly sales</h6>
-                  <div class="dropdown mb-2">
-                    <a type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
-                    </div>
-                  </div>
+                  <h6 class="card-title mb-0">Monthly SCHEDULED REQUEST</h6>
+                 
                 </div>
                 <p class="text-muted">Sales are activities related to selling or the number of goods or services sold in a given time period.</p>
-                <div id="monthlySalesChart"></div>
+                <canvas id="monthlySalesChart"></canvas>
               </div> 
             </div>
           </div>
           
         </div> <!-- row -->
+
+        
 
         <div class="row">
           <div class="col-lg-5 col-xl-4 grid-margin grid-margin-xl-0 stretch-card">
@@ -185,18 +151,7 @@ $status = $agentId->status;
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-baseline mb-2">
                   <h6 class="card-title mb-0">Inbox</h6>
-                  <div class="dropdown mb-2">
-                    <a type="button" id="dropdownMenuButton6" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton6">
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
-                    </div>
-                  </div>
+                  
                 </div>
                 <div class="d-flex flex-column">
                   <a href="javascript:;" class="d-flex align-items-center border-bottom pb-3">
@@ -267,90 +222,46 @@ $status = $agentId->status;
             <div class="card">
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-baseline mb-2">
-                  <h6 class="card-title mb-0">Projects</h6>
-                  <div class="dropdown mb-2">
-                    <a type="button" id="dropdownMenuButton7" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton7">
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="eye" class="icon-sm me-2"></i> <span class="">View</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="edit-2" class="icon-sm me-2"></i> <span class="">Edit</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="trash" class="icon-sm me-2"></i> <span class="">Delete</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="printer" class="icon-sm me-2"></i> <span class="">Print</span></a>
-                      <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i data-feather="download" class="icon-sm me-2"></i> <span class="">Download</span></a>
-                    </div>
-                  </div>
+                  <h6 class="card-title mb-0">Recent Scheduled Request</h6>
+                  
                 </div>
                 <div class="table-responsive">
                   <table class="table table-hover mb-0">
                     <thead>
                       <tr>
                         <th class="pt-0">#</th>
-                        <th class="pt-0">Project Name</th>
-                        <th class="pt-0">Start Date</th>
-                        <th class="pt-0">Due Date</th>
+                        <th class="pt-0">User</th>
+                        <th class="pt-0">Property</th>
+                        <th class="pt-0">Date</th>
+                        <th class="pt-0">Time</th>
                         <th class="pt-0">Status</th>
-                        <th class="pt-0">Assign</th>
+                        <th class="pt-0">Action</th>
                       </tr>
                     </thead>
                     <tbody>
+                   @foreach($usermsg as $key => $item)
                       <tr>
-                        <td>1</td>
-                        <td>NobleUI jQuery</td>
-                        <td>01/01/2022</td>
-                        <td>26/04/2022</td>
-                        <td><span class="badge bg-danger">Released</span></td>
-                        <td>Leonardo Payne</td>
+                        <td>{{ $key+1 }}</td> 
+                        <td>{{ $item['user']['name'] }}</td> 
+                        <td>{{ $item['property']['property_name'] }}</td> 
+                        <td>{{ $item->tour_date }}</td> 
+                        <td>{{ $item->tour_time }}</td> 
+                        <td> 
+                      @if($item->status == 1)
+                <span class="badge rounded-pill bg-success">Confirm</span>
+                      @else
+               <span class="badge rounded-pill bg-danger">Pending</span>
+                      @endif
+
+                        </td> 
+                        <td>
+
+        <a href="{{ route('agent.details.schedule',$item->id) }}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
+  
+       <a href="{{ route('agent.delete.property',$item->id) }}" class="btn btn-inverse-danger" id="delete" title="Delete"> <i data-feather="trash-2"></i>  </a>
+                        </td> 
                       </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>NobleUI Angular</td>
-                        <td>01/01/2022</td>
-                        <td>26/04/2022</td>
-                        <td><span class="badge bg-success">Review</span></td>
-                        <td>Carl Henson</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>NobleUI ReactJs</td>
-                        <td>01/05/2022</td>
-                        <td>10/09/2022</td>
-                        <td><span class="badge bg-info">Pending</span></td>
-                        <td>Jensen Combs</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>NobleUI VueJs</td>
-                        <td>01/01/2022</td>
-                        <td>31/11/2022</td>
-                        <td><span class="badge bg-warning">Work in Progress</span>
-                        </td>
-                        <td>Amiah Burton</td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>NobleUI Laravel</td>
-                        <td>01/01/2022</td>
-                        <td>31/12/2022</td>
-                        <td><span class="badge bg-danger">Coming soon</span></td>
-                        <td>Yaretzi Mayo</td>
-                      </tr>
-                      <tr>
-                        <td>6</td>
-                        <td>NobleUI NodeJs</td>
-                        <td>01/01/2022</td>
-                        <td>31/12/2022</td>
-                        <td><span class="badge bg-primary">Coming soon</span></td>
-                        <td>Carl Henson</td>
-                      </tr>
-                      <tr>
-                        <td class="border-bottom">3</td>
-                        <td class="border-bottom">NobleUI EmberJs</td>
-                        <td class="border-bottom">01/05/2022</td>
-                        <td class="border-bottom">10/11/2022</td>
-                        <td class="border-bottom"><span class="badge bg-info">Pending</span></td>
-                        <td class="border-bottom">Jensen Combs</td>
-                      </tr>
+                     @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -359,6 +270,116 @@ $status = $agentId->status;
           </div>
         </div> <!-- row -->
 
+
+
+
+
+
+        <br/><hr/>
+
+
+
+
+
+
+
+        <div class="col-lg-7 col-xl-12 stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-baseline mb-2">
+                  <h6 class="card-title mb-0">Recent Properties</h6>
+                  
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-hover mb-0">
+                  <thead>
+                      <tr>
+                        <th>Sl </th>
+                        <th>Image </th> 
+                        <th>Name </th> 
+                        <th>P Type </th> 
+                        <th>Status Type </th> 
+                        <th>City </th> 
+                        <th>Code </th> 
+                        <th>Status </th>  
+                        <th>Action </th> 
+                      </tr>
+                    </thead>
+                    <tbody>
+                   @foreach($property as $key => $item)
+                      <tr>
+                        <td>{{ $key+1 }}</td>
+                        <td><img src="{{ asset($item->property_thambnail) }}" style="width:70px; height:40px; border-radius: 0;"> </td> 
+                        <td>{{ $item->property_name }}</td> 
+                        <td>{{ $item['type']['type_name'] }}</td> 
+                        <td>{{ $item->property_status }}</td> 
+                        <td>{{ $item->city }}</td> 
+                        <td>{{ $item->property_code }}</td> 
+                        <td> 
+                      @if($item->status == 1)
+                <span class="badge rounded-pill bg-success">Active</span>
+                      @else
+               <span class="badge rounded-pill bg-danger">InActive</span>
+                      @endif
+
+                        </td> 
+                        <td>
+
+        <a href="{{ route('agent.details.property',$item->id) }}" class="btn btn-inverse-info" title="Details"> <i data-feather="eye"></i> </a>
+
+       <a href="{{ route('agent.edit.property',$item->id) }}" class="btn btn-inverse-warning" title="Edit"> <i data-feather="edit"></i> </a>
+
+       <a href="{{ route('agent.delete.property',$item->id) }}" class="btn btn-inverse-danger" id="delete" title="Delete"> <i data-feather="trash-2"></i>  </a>
+                        </td> 
+                      </tr>
+                     @endforeach
+                    </tbody>
+                  </table>
+                </div>
+              </div> 
+            </div>
+          </div>
+          
+
       </div>
+
+
+      <script>
+    // Get the data for the Monthly Sales chart
+    var monthlySalesChartData = {
+        labels: {!! json_encode($sRequest->pluck('tour_date')->map(function($date) {
+            return \Carbon\Carbon::parse($date)->format('M');
+        })) !!},
+        datasets: [{
+            label: 'Number of Scheduled Requests',
+            data: {!! json_encode($sRequest->groupBy(function($item) {
+                return \Carbon\Carbon::parse($item->tour_date)->format('M');
+            })->map->count()->values()) !!},
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    // Chart configuration for Monthly Sales chart
+    var monthlySalesChartConfig = {
+        type: 'bar',
+        data: monthlySalesChartData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    stepSize: 1
+                }
+            }
+        }
+    };
+
+    // Create the Monthly Sales chart
+    var monthlySalesChartCtx = document.getElementById('monthlySalesChart').getContext('2d');
+    var monthlySalesChart = new Chart(monthlySalesChartCtx, monthlySalesChartConfig);
+</script>
+
+
 
 @endsection

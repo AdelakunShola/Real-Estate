@@ -542,7 +542,7 @@ public function AgentUpdatePropertyThambnail(Request $request){
 
      public function AgentMessageDetails($id){
 
-        $uid = Auth::user()->id;
+        $uid = Auth::user()->id; 
         $usermsg = PropertyMessage::where('agent_id',$uid)->get();
 
         $msgdetails = PropertyMessage::findOrFail($id);
