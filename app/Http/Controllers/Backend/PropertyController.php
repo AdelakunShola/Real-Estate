@@ -223,7 +223,7 @@ class PropertyController extends Controller
     }// End Method 
 
 
-
+ 
     public function UpdatePropertyThambnail(Request $request){
 
         $pro_id = $request->id;

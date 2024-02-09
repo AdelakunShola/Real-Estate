@@ -46,7 +46,7 @@
     <div class="col-sm-6">
             <div class="form-group mb-3">
                 <label class="form-label">Lowest Price </label>
-                <input type="text" name="lowest_price" class="form-control" value="{{ $property->lowest_price }}"  >
+                <input type="text" name="lowest_price" class="form-control" value="{{ Number_format($property->lowest_price,0,'.',',')}}"  >
             </div>
         </div><!-- Col -->
 
@@ -54,7 +54,7 @@
             <div class="col-sm-6">
             <div class="form-group mb-3">
                 <label class="form-label">Max Price </label>
-                <input type="text" name="max_price" class="form-control" value="{{ $property->max_price }}"  >
+                <input type="text" name="max_price" class="form-control" value="{{ Number_format($property->max_price,0,'.',',')}}"  >
             </div>
         </div><!-- Col -->
 
@@ -158,14 +158,14 @@
         <div class="col-sm-6">
             <div class="mb-3">
                 <label class="form-label">Latitude</label>
-                <input type="text" name="latitude" class="form-control" value="{{ $property->latitude }}" >
+                <input type="text" name="latitude" class="form-control" value="{{ number_format($property->latitude, 6, '.', ',') }}" >
                 <a href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank">Go here to get Latitude from address</a>
             </div>
         </div><!-- Col -->
         <div class="col-sm-6">
             <div class="mb-3">
                 <label class="form-label">Longitude</label>
-                <input type="text" name="longitude" class="form-control" value="{{ $property->longitude }}" >
+                <input type="text" name="longitude" class="form-control" value="{{ number_format($property->latitude, 6, '.', ',') }}" >
                  <a href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank">Go here to get Longitude from address</a>
             </div>
         </div><!-- Col -->

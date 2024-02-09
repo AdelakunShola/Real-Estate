@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\ChatController;
  
 use App\Http\Controllers\Agent\AgentPropertyController;
+use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\CompareController;
@@ -351,6 +352,22 @@ Route::controller(AdminController::class)->group(function(){
 });
 
 
+
+ // Admin User All Route 
+ Route::controller(AboutController::class)->group(function(){
+
+     Route::get('/about/page', 'AboutPage')->name('about.page');
+     Route::post('/update/about', 'UpdateAbout')->name('update.about');
+
+     Route::get('/all/partner', 'AllPartner')->name('all.partner');
+     Route::post('/store/partner', 'StorePartner')->name('store.partner');
+     Route::get('/delete/partner/{id}', 'DeletePartner')->name('delete.partner');
+     
+     
+
+});
+
+
 }); // End Group Admin Middleware
 
 
@@ -489,6 +506,12 @@ Route::controller(AgentPropertyController::class)->group(function(){
 
 
 
+  // frontend about us all Route
+  Route::controller(IndexController::class)->group(function(){
+     Route::get('/about-us', 'AboutUs')->name('about.us');   
+});
+
+
 
 
   // notification route 
@@ -496,5 +519,4 @@ Route::controller(PropertyController::class)->group(function(){
 
      Route::post('/mark-notification-as-read/{notification}', 'MarkAsRead');
      
-
 });

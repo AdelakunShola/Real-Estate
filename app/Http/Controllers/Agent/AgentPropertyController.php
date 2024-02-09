@@ -61,6 +61,11 @@ class AgentPropertyController extends Controller
 
      public function AgentStoreProperty(Request $request){
 
+
+        $request->validate([
+            'amenities_id' => 'required|array|min:1', // Ensures that amenities_id is an array and has at least one element
+        ]);
+
         
 
         $id = Auth::user()->id;
@@ -71,7 +76,7 @@ class AgentPropertyController extends Controller
         $amenites = implode(",", $amen);
         // dd($amenites);
 
-        $pcode = IdGenerator::generate(['table' => 'properties','field' => 'property_code','length' => 5, 'prefix' => 'PC' ]);
+        $pcode = IdGenerator::generate(['table' => 'properties','field' => 'property_code','length' => 5, 'prefix' => 'AH' ]);
 
 
         $image = $request->file('property_thambnail');

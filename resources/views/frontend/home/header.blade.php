@@ -17,8 +17,8 @@
     <ul class="social-links clearfix">
         <li><a href="{{ $setting->facebook }}"><i class="fab fa-facebook-f"></i></a></li>
         <li><a href="{{ $setting->twitter }}"><i class="fab fa-twitter"></i></a></li>
-        <li><a href="index.html"><i class="fab fa-pinterest-p"></i></a></li>
-        <li><a href="index.html"><i class="fab fa-google-plus-g"></i></a></li>
+        <li><a href="index.html"><i class="fab fa-youtube"></i></a></li>
+        <li><a href="index.html"><i class="fab fa-instagram"></i></a></li
         <li><a href="index.html"><i class="fab fa-vimeo-v"></i></a></li>
     </ul>
 
@@ -61,9 +61,9 @@
             <ul class="navigation clearfix">
 
      <li><a href="{{ url('/') }}"><span>Home</span></a> </li>
-     <li><a href="{{ url('/') }}"><span>About Us </span></a> </li>
+     <li><a href="{{ route('about.us') }}"><span>About Us </span></a> </li>
              
-<li class="dropdown"><a href="index.html"><span>Property</span></a>
+<li class="dropdown"><a href="#"><span>Property</span></a>
     <ul>
         <li><a href="{{ route('rent.property') }}">Rent Property</a></li>
         <li><a href="{{ route('buy.property') }}">Buy Property </a></li>

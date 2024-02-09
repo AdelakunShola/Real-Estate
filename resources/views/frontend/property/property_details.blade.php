@@ -119,32 +119,22 @@
                             </div>
                             
                             <div class="location-box content-widget">
-                                <div class="title-box">
-                                    <h4>Location</h4>
-                                </div>
-<ul class="info clearfix">
-    <li><span>Address:</span> {{ $property->address }}</li> 
-    <li><span>State/county:</span> {{ $property['pstate']['state_name'] }}</li>
-    <li><span>Neighborhood:</span> {{ $property->neighborhood }}</li>
-    <li><span>Zip/Postal Code:</span> {{ $property->postal_code }}</li>
-    <li><span>City:</span> {{ $property->city }}</li>
-</ul>
-<div class="google-map-area">
-    <div 
-        class="google-map" 
-        id="contact-google-map" 
-        data-map-lat="{{ $property->latitude }}" 
-        data-map-lng="{{ $property->longitude }}" 
-        data-icon-path="{{ asset('frontend/assets/images/icons/map-marker.png') }}"  
-        data-map-title="Brooklyn, New York, United Kingdom" 
-        data-map-zoom="12" 
-        data-markers='{
-            "marker-1": [40.712776, -74.005974, "<h4>Branch Office</h4><p>77/99 New York</p>","{{ asset('frontend/assets/images/icons/map-marker.png') }}"]
-        }'>
-
+    <div class="title-box">
+        <h4>Location</h4>
+    </div>
+    <ul class="info clearfix">
+        <li><span>Address:</span> {{ $property->address }}</li>
+        <li><span>State/county:</span> {{ $property['pstate']['state_name'] }}</li>
+        <li><span>Neighborhood:</span> {{ $property->neighborhood }}</li>
+        <li><span>Zip/Postal Code:</span> {{ $property->postal_code }}</li>
+        <li><span>City:</span> {{ $property->city }}</li>
+    </ul>
+    <div class="google-map-area">
+        <div class="google-map" id="contact-google-map" data-map-zoom="12">
+        </div>
     </div>
 </div>
-                            </div>
+
                             <div class="nearby-box content-widget">
                                 <div class="title-box">
                                     <h4>What’s Nearby?</h4>
@@ -507,6 +497,31 @@
 
 
 
+   
+        <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>
+        <script>
+    function initMap() {
+        var geocoder = new google.maps.Geocoder();
+        var map = new google.maps.Map(document.getElementById('contact-google-map'), {
+            zoom: 12,
+            center: { lat: 0, lng: 0 } // Default center
+        });
+
+        var address = "{{ $property->address }}, {{ $property->city }}, {{ $property['pstate']['state_name'] }}";
+
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status === 'OK') {
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+            } else {
+                console.error('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+</script>
 
 
 @endsection

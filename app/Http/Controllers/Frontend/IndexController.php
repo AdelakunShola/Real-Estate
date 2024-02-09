@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\PropertyMessage;  
 use Carbon\Carbon;
 use App\Models\State; 
-use App\Models\Schedule; 
+use App\Models\Schedule;
+use App\Models\AboutUs; 
 
 class IndexController extends Controller
 {
@@ -275,6 +276,16 @@ class IndexController extends Controller
         }
 
     }// End Method 
+
+
+
+
+
+
+    public function AboutUs(){
+        $about = AboutUs::find(1); 
+        return view('frontend.about.aboutus',compact('about'));   
+    }//edmethod
 
 
 
