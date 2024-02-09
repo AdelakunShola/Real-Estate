@@ -90,6 +90,12 @@ class PropertyTypeController extends Controller
     }// End Method 
 
 
+    public function AllCategories(){
+        $types = PropertyType::latest()->get();
+        return view('frontend.category.all_category',compact('types'));
+    }// End Method 
+
+
      ///////////// Amenitites All Method //////////////
 
 

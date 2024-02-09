@@ -6,7 +6,7 @@
 @endsection
 
 
- <!--Page Title-->
+ <!--Page Title--> 
         <section class="page-title-two bg-color-1 centred">
             <div class="pattern-layer">
                 <div class="pattern-1" style="background-image: url({{ asset('frontend/assets/images/shape/shape-9.png') }});"></div>

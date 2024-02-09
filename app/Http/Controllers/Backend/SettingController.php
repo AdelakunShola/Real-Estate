@@ -70,6 +70,8 @@ class SettingController extends Controller
         'email' => $request->email,
         'facebook' => $request->facebook,
         'twitter' => $request->twitter,
+        'youtube' => $request->youtube,
+        'instagram' => $request->instagram,
         'copyright' => $request->copyright, 
         'logo' => $save_url, 
     ]);
@@ -89,6 +91,8 @@ class SettingController extends Controller
         'email' => $request->email,
         'facebook' => $request->facebook,
         'twitter' => $request->twitter,
+        'youtube' => $request->youtube,
+        'instagram' => $request->instagram,
         'copyright' => $request->copyright,  
     ]);
 

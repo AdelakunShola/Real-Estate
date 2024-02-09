@@ -20,7 +20,8 @@ use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\CompareController;
-     
+use App\Models\PropertyType;
+
 /*   
 |--------------------------------------------------------------------------
 | Web Routes
@@ -509,6 +510,11 @@ Route::controller(AgentPropertyController::class)->group(function(){
   // frontend about us all Route
   Route::controller(IndexController::class)->group(function(){
      Route::get('/about-us', 'AboutUs')->name('about.us');   
+});
+
+
+Route::controller(PropertyTypeController::class)->group(function(){
+     Route::get('/all/categories', 'AllCategories')->name('all.categories');   
 });
 
 

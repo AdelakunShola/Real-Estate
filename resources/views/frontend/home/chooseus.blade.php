@@ -7,7 +7,7 @@
                             <h2>Reasons To Choose Us</h2>
                         </div>
                         <div class="btn-box">
-                            <a href="categories.html" class="theme-btn btn-one">All Categories</a>
+                            <a href="{{ route('about.us') }}" class="theme-btn btn-one">About Us</a>
                         </div>
                     </div>
                     <div class="lower-box">

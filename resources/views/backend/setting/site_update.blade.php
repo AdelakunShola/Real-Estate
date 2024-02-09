@@ -53,6 +53,18 @@
                 </div>
 
 
+                <div class="form-group mb-3">
+ <label for="exampleInputEmail1" class="form-label">youtube   </label>
+      <input type="text" name="youtube" class="form-control" value="{{ $sitesetting->youtube }}" > 
+                </div>
+
+
+                <div class="form-group mb-3">
+ <label for="exampleInputEmail1" class="form-label">instagram   </label>
+      <input type="text" name="instagram" class="form-control" value="{{ $sitesetting->instagram }}" > 
+                </div>
+
+
                         <div class="form-group mb-3">
  <label for="exampleInputEmail1" class="form-label"> copyright   </label>
       <input type="text" name="copyright" class="form-control" value="{{ $sitesetting->copyright }}" > 
