@@ -36,6 +36,11 @@ class AgentPropertyController extends Controller
     } // End Method 
 
 
+    public function AllAgent(){
+        return view('frontend.all-agent.all_agent');
+    }
+
+
      public function AgentAddProperty(){
 
         $propertytype = PropertyType::latest()->get();

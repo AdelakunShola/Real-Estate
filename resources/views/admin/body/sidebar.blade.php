@@ -151,12 +151,12 @@
 
 
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
+            <a class="nav-link" data-bs-toggle="collapse" href="#aboutpage" role="button" aria-expanded="false" aria-controls="uiComponents">
               <i class="link-icon" data-feather="feather"></i>
               <span class="link-title">About Page</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse" id="uiComponents">
+            <div class="collapse" id="aboutpage">
               <ul class="nav sub-menu">
                 <li class="nav-item">
                   <a href="{{ route('about.page') }}" class="nav-link">About Us</a>
@@ -167,17 +167,55 @@
             </div>
           </li>
 
+
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
+            <a class="nav-link" data-bs-toggle="collapse" href="#Servicese" role="button" aria-expanded="false" aria-controls="uiComponents">
+              <i class="link-icon" data-feather="feather"></i>
+              <span class="link-title">Our Services</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="Servicese">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                  <a href="{{ route('all.services') }}" class="nav-link">All Services</a>
+                </li>
+               
+                
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#Partners" role="button" aria-expanded="false" aria-controls="uiComponents">
               <i class="link-icon" data-feather="feather"></i>
               <span class="link-title">Partners</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse" id="uiComponents">
+            <div class="collapse" id="Partners">
               <ul class="nav sub-menu">
                 <li class="nav-item">
                  
                   <a href="{{ route('all.partner') }}" class="nav-link">All Partners</a>
+                </li>
+               
+                
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#Contact" role="button" aria-expanded="false" aria-controls="uiComponents">
+              <i class="link-icon" data-feather="feather"></i>
+              <span class="link-title">Contact Us</span>
+              <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="Contact">
+              <ul class="nav sub-menu">
+                <li class="nav-item">
+                 
+                  <a href="" class="nav-link">Contact Message</a>
                 </li>
                
                 

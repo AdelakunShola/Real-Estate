@@ -4,21 +4,25 @@
 @php
 $testimonial = App\Models\Testimonial::latest()->get();
 $partners = App\Models\Partner::latest()->get();
-
+$services = App\Models\OurService::latest()->get();
 @endphp
 
+
  <!--Page Title-->
- <section class="page-title centred" style="background-image: url({{asset('frontend/assets/images/background/page-title-3.jpg')}});">
+<section class="cta-section page-title centred  bg-color-2">
+            <div class="pattern-layer" style="background-image: url({{ asset('frontend/assets/images/shape/shape-2.png') }});"></div>
             <div class="auto-container">                     
                 <div class="content-box clearfix">
                     <h1>About Us</h1>
                     <ul class="bread-crumb clearfix">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li>About Us</li>
                     </ul>
                 </div>
             </div>
         </section>
+
+
         <!--End Page Title-->
 
 
@@ -50,7 +54,7 @@ $partners = App\Models\Partner::latest()->get();
                                     </div>
                                    
                                     <div class="btn-box">
-                                        <a href="contact.html" class="theme-btn btn-one">Contact With Me</a>
+                                        <a href="{{ route('contact.us') }}" class="theme-btn btn-one">Contact Us</a>
                                     </div>
                                 </div>
                             </div>
@@ -70,69 +74,18 @@ $partners = App\Models\Partner::latest()->get();
                     <h2>Property Services</h2>
                 </div>
                 <div class="three-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
+
+                @foreach ($services as $item)
                     <div class="feature-block-two">
                         <div class="inner-box">
-                            <div class="icon-box"><i class="icon-1"></i></div>
-                            <h4>Excellent Reputation</h4>
-                            <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
+                            <div class="icon-box"><i class="{{ $item->icon}}"></i></div>
+                            <h4>{{ $item->title}}</h4>
+                            <p>{{ $item->short_desc}}</p>
                         </div>
                     </div>
-                    <div class="feature-block-two">
-                        <div class="inner-box">
-                            <div class="icon-box"><i class="icon-26"></i></div>
-                            <h4>Best Local Agents</h4>
-                            <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
-                        </div>
-                    </div>
-                    <div class="feature-block-two">
-                        <div class="inner-box">
-                            <div class="icon-box"><i class="icon-21"></i></div>
-                            <h4>Personalized Service</h4>
-                            <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
-                        </div>
-                    </div>
-                    <div class="feature-block-two">
-                        <div class="inner-box">
-                            <div class="icon-box"><i class="icon-1"></i></div>
-                            <h4>Excellent Reputation</h4>
-                            <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
-                        </div>
-                    </div>
-                    <div class="feature-block-two">
-                        <div class="inner-box">
-                            <div class="icon-box"><i class="icon-26"></i></div>
-                            <h4>Best Local Agents</h4>
-                            <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
-                        </div>
-                    </div>
-                    <div class="feature-block-two">
-                        <div class="inner-box">
-                            <div class="icon-box"><i class="icon-21"></i></div>
-                            <h4>Personalized Service</h4>
-                            <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
-                        </div>
-                    </div>
-                    <div class="feature-block-two">
-                        <div class="inner-box">
-                            <div class="icon-box"><i class="icon-1"></i></div>
-                            <h4>Excellent Reputation</h4>
-                            <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
-                        </div>
-                    </div>
-                    <div class="feature-block-two">
-                        <div class="inner-box">
-                            <div class="icon-box"><i class="icon-26"></i></div>
-                            <h4>Best Local Agents</h4>
-                            <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
-                        </div>
-                    </div>
-                    <div class="feature-block-two">
-                        <div class="inner-box">
-                            <div class="icon-box"><i class="icon-21"></i></div>
-                            <h4>Personalized Service</h4>
-                            <p>Lorem ipsum dolor sit consectetur sed eiusm tempor incididunt dolore magna.</p>
-                        </div>
-                    </div>
+                    @endforeach
+                    
+                    
                 </div>
             </div>
         </section>
@@ -140,20 +93,9 @@ $partners = App\Models\Partner::latest()->get();
 
 
         <!-- cta-section -->
-        <section class="cta-section alternate-2 pb-240 centred" style="background-image: url(assets/images/background/cta-1.jpg);">
-            <div class="auto-container">
-                <div class="inner-box clearfix">
-                    <div class="text">
-                        <h2>Looking to Buy a New Property or <br />Sell an Existing One?</h2>
-                    </div>
-                    <div class="btn-box">
-                        <a href="property-details.html" class="theme-btn btn-three">Rent Properties</a>
-                        <a href="index.html" class="theme-btn btn-one">Buy Properties</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+      @include('frontend.home.cta')
         <!-- cta-section end -->
+      
 
 
         <!-- funfact-section -->
@@ -289,12 +231,12 @@ $partners = App\Models\Partner::latest()->get();
                                 <span>Download</span>
                                 <h2>Download Our Android and IOS App for Experience</h2>
                                 <div class="download-btn">
-                                    <a href="index.html" class="app-store">
+                                    <a href="/" class="app-store">
                                         <i class="fab fa-apple"></i>
                                         <p>Download on</p>
                                         <h4>App Store</h4>
                                     </a>
-                                    <a href="index.html" class="google-play">
+                                    <a href="/" class="google-play">
                                         <i class="fab fa-google-play"></i>
                                         <p>Get It On</p>
                                         <h4>Google Play</h4>

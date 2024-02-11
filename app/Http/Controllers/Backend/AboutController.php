@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
+use App\Models\OurService;
 use App\Models\Partner;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
@@ -13,7 +14,6 @@ use Illuminate\Support\Facades\Auth;
 class AboutController extends Controller
 {
     public function AboutPage(){
-
         $about = AboutUs::find(1); 
         return view('backend.about.about_us',compact('about'));  
 
@@ -72,6 +72,12 @@ class AboutController extends Controller
     }// End Method
 
 
+
+
+
+
+    //////////////////OUR PARTNER //////////////////
+
     public function AllPartner(){
 
         $partners = Partner::latest()->get();
@@ -111,7 +117,6 @@ class AboutController extends Controller
 
 
 
-
         public function DeletePartner($id){
 
             $oldImg = Partner::findOrFail($id);
@@ -127,6 +132,69 @@ class AboutController extends Controller
             return redirect()->back()->with($notification); 
     
         }// End Method 
+
+
+
+
+
+         //////////////////OUR SERVICES //////////////////
+
+
+        public function AllService(){
+            $services = OurService::latest()->get();
+            return view('backend.service.all_services', compact('services'));
+
+        }// End Method 
+
+
+        public function StoreService(Request $request){
+
+            OurService::insert([
+                'icon' => $request->icon,
+                'title' => $request->title,
+                'short_desc' => $request->short_desc,
+                'created_at' => Carbon::now(),
+            ]);
+        
+             $notification = array(
+                    'message' => 'Service Inserted Successfully',
+                    'alert-type' => 'success'
+                );
+        
+                return redirect()->route('all.services')->with($notification);
+        
+            }// End Method 
+
+
+            public function EditService($id){
+                $service = OurService::find($id);
+                return view('backend.service.edit_service',compact('service'));
+    
+            }// End Method 
+
+
+
+            public function UpdateService(Request $request, $id){ 
+
+                $id = $request->id;
+            
+                OurService::findOrFail($id)->update([ 
+            
+                    'icon' => $request->icon,
+                    'title' => $request->title,
+                    'short_desc' => $request->short_desc,
+                    'created_at' => Carbon::now(),
+                    ]);
+            
+                      $notification = array(
+                        'message' => 'Services Updated Successfully',
+                        'alert-type' => 'success'
+                    );
+            
+                    return redirect()->route('all.services')->with($notification);
+            
+            
+                }// End Method 
 
 
    

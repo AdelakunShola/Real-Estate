@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\ChatController;
  
 use App\Http\Controllers\Agent\AgentPropertyController;
 use App\Http\Controllers\Backend\AboutController;
+use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\CompareController;
@@ -363,9 +364,18 @@ Route::controller(AdminController::class)->group(function(){
      Route::get('/all/partner', 'AllPartner')->name('all.partner');
      Route::post('/store/partner', 'StorePartner')->name('store.partner');
      Route::get('/delete/partner/{id}', 'DeletePartner')->name('delete.partner');
-     
-     
 
+     Route::get('/all/services/', 'AllService')->name('all.services');
+     Route::post('/store/services/', 'StoreService')->name('store.services');
+     Route::get('/edit/service/{id}', 'EditService')->name('edit.services');
+     Route::post('/update/service/{id}', 'UpdateService')->name('update.services');
+
+});
+
+Route::controller(ContactController::class)->group(function(){
+
+   
+    
 });
 
 
@@ -525,4 +535,20 @@ Route::controller(PropertyController::class)->group(function(){
 
      Route::post('/mark-notification-as-read/{notification}', 'MarkAsRead');
      
+});
+
+
+Route::controller(ContactController::class)->group(function(){
+
+     Route::get('/contact-us', 'ContactUs')->name('contact.us');
+     Route::post('/contact-submit', 'ContactSubmit')->name('contact.submit');
+    
+});
+
+
+Route::controller(AgentPropertyController::class)->group(function(){
+
+     Route::get('/all/agents', 'AllAgent')->name('all.agent.page');
+     
+    
 });

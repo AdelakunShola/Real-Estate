@@ -69,12 +69,12 @@
         
     </ul>
 </li>
-         <li><a href="{{ url('/') }}"><span>Agent </span></a> </li>       
+         <li><a href="{{ route('all.agent.page') }}"><span>Agent </span></a> </li>       
              
  <li><a href="{{ route('blog.list') }}"><span>Blog  </span></a> </li>
 
 
-     <li><a href="contact.html"><span>Contact</span></a></li> 
+     <li><a href="{{ route('contact.us') }}"><span>Contact</span></a></li> 
     
      <li> 
     <a href="{{ route('agent.login') }}" class="btn btn-success"><span>+</span>Add Listing</a> 
