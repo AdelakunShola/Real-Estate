@@ -147,7 +147,7 @@
                     <div class="lower-content">
          <div class="title-text"><h4><a href="{{ url('property/details/'.$item->id.'/'.$item->property_slug) }}">{{ $item->property_name }}</a></h4></div>
                         <div class="price-box clearfix">
-                            <div class="price-info pull-left">
+                             <div class="price-info pull-left">
                                 <h6>Start From</h6>
                                 <h4>${{ $item->lowest_price }}</h4>
                             </div>
