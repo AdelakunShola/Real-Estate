@@ -11,7 +11,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
                             <div class="footer-widget about-widget">
                                 <div class="widget-title">
-                                    <h3>About</h3>
+                                <h5 style="color: white;">About</h5>
                                 </div>
                                 <div class="text">
                                     <p>Lorem ipsum dolor amet consetetur adi pisicing elit sed eiusm tempor in cididunt ut labore dolore magna aliqua enim ad minim venitam</p>
@@ -22,16 +22,14 @@
                         <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
                             <div class="footer-widget links-widget ml-70">
                                 <div class="widget-title">
-                                    <h3>Services</h3>
+                                    <h5 style="color: white;">Services</h5>
                                 </div>
                                 <div class="widget-content">
                                     <ul class="links-list class">
-                                        <li><a href="index.html">About Us</a></li>
-                                        <li><a href="index.html">Listing</a></li>
-                                        <li><a href="index.html">How It Works</a></li>
-                                        <li><a href="index.html">Our Services</a></li>
-                                        <li><a href="index.html">Our Blog</a></li>
-                                        <li><a href="index.html">Contact Us</a></li>
+                                        <li><a href="{{ route('about.us') }}">About Us</a></li>
+                                        <li><a href="{{ route('agent.login') }}">AddListing</a></li>
+                                        <li><a href="{{ route('blog.list') }}">Our Blog</a></li>
+                                        <li><a href="{{ route('contact.us') }}">Contact Us</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -39,7 +37,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
                             <div class="footer-widget post-widget">
                                 <div class="widget-title">
-                                    <h3>Top News</h3>
+                                <h5 style="color: white;">Top News</h5>
                                 </div>
                                 <div class="post-inner">
 
@@ -57,7 +55,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
                             <div class="footer-widget contact-widget">
                                 <div class="widget-title">
-                                    <h3>Contacts</h3>
+                                <h5 style="color: white;">Contacts</h5>
                                 </div>
                                 <div class="widget-content">
     <ul class="info-list clearfix">

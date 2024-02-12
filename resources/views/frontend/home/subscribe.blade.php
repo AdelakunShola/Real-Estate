@@ -10,7 +10,8 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 form-column">
                         <div class="form-inner">
-                            <form action="contact.html" method="post" class="subscribe-form">
+                        <form action="{{ route('subscribe') }}" method="post" class="subscribe-form">
+                           @csrf 
                                 <div class="form-group">
                                     <input type="email" name="email" placeholder="Enter your email" required="">
                                     <button type="submit">Subscribe Now</button>
@@ -21,3 +22,4 @@
                 </div>
             </div>
         </section>
+        {{ route('subscribe') }}

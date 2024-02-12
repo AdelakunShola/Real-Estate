@@ -17,6 +17,9 @@ use Carbon\Carbon;
 use App\Models\State; 
 use App\Models\Schedule;
 use App\Models\AboutUs; 
+use App\Mail\Newsletter;
+use App\Models\Subscriber;
+use Illuminate\Support\Facades\Mail;
 
 class IndexController extends Controller
 {
@@ -59,7 +62,7 @@ class IndexController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Send Message Successfully',
+            'message' => 'Message Sent Successfully',
             'alert-type' => 'success'
         );
 
@@ -70,7 +73,7 @@ class IndexController extends Controller
         }else{
 
             $notification = array(
-            'message' => 'Plz Login Your Account First',
+            'message' => 'Please Login To Your Account First',
             'alert-type' => 'error'
         );
 
@@ -113,7 +116,7 @@ class IndexController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Send Message Successfully',
+            'message' => 'Message Sent Successfully',
             'alert-type' => 'success'
         );
 
@@ -124,7 +127,7 @@ class IndexController extends Controller
         }else{
 
             $notification = array(
-            'message' => 'Plz Login Your Account First',
+            'message' => 'Please Login To Your Account First',
             'alert-type' => 'error'
         );
 
@@ -136,7 +139,7 @@ class IndexController extends Controller
 
     public function RentProperty(){
 
-        $property = Property::where('status','1')->where('property_status','rent')->paginate(3);
+        $property = Property::where('status','1')->where('property_status','rent')->paginate(8);
 
         return view('frontend.property.rent_property',compact('property'));
 
@@ -145,7 +148,7 @@ class IndexController extends Controller
 
     public function BuyProperty(){
 
-        $property = Property::where('status','1')->where('property_status','buy')->paginate(3);
+        $property = Property::where('status','1')->where('property_status','buy')->paginate(8);
 
         return view('frontend.property.buy_property',compact('property'));
 
@@ -154,7 +157,7 @@ class IndexController extends Controller
 
     public function PropertyType($id){
 
-        $property = Property::where('status','1')->where('ptype_id',$id)->get();
+        $property = Property::where('status','1')->where('ptype_id',$id)->paginate(8);
 
         $pbread = PropertyType::where('id',$id)->first();
 
@@ -179,14 +182,15 @@ class IndexController extends Controller
         $sstate = $request->state;
         $stype = $request->ptype_id;
 
-   $property = Property::where('property_name', 'like' , '%' .$item. '%')->where('property_status','buy')->with('type','pstate')
+   $property = Property::where('property_name', 'like' , '%' .$item. '%')
+   ->where('property_status','buy')->with('type','pstate')
         ->whereHas('pstate', function($q) use ($sstate){
             $q->where('state_name','like' , '%' .$sstate. '%');
         })
         ->whereHas('type', function($q) use ($stype){
             $q->where('type_name','like' , '%' .$stype. '%');
          })
-        ->get();
+        ->get(10);
 
         return view('frontend.property.property_search',compact('property'));
 
@@ -200,7 +204,8 @@ class IndexController extends Controller
         $sstate = $request->state;
         $stype = $request->ptype_id;
 
-   $property = Property::where('property_name', 'like' , '%' .$item. '%')->where('property_status','rent')->with('type','pstate')
+   $property = Property::where('property_name', 'like' , '%' .$item. '%')
+   ->where('property_status','rent')->with('type','pstate')
         ->whereHas('pstate', function($q) use ($sstate){
             $q->where('state_name','like' , '%' .$sstate. '%');
         })
@@ -257,7 +262,7 @@ class IndexController extends Controller
             ]);
 
              $notification = array(
-            'message' => 'Send Request Successfully',
+            'message' => 'Request Sent Successfully',
             'alert-type' => 'success'
         );
 
@@ -267,7 +272,7 @@ class IndexController extends Controller
         }else{
 
            $notification = array(
-            'message' => 'Plz Login Your Account First',
+            'message' => 'Please Login To Your Account First',
             'alert-type' => 'error'
         );
 
@@ -279,13 +284,38 @@ class IndexController extends Controller
 
 
 
-
-
-
     public function AboutUs(){
         $about = AboutUs::find(1); 
         return view('frontend.about.aboutus',compact('about'));   
     }//edmethod
+
+
+
+    public function Subscribe(Request $request){
+    $request->validate([
+        'email' => 'required|email|unique:subscribers',
+    ]);
+
+
+    Subscriber::insert([
+        'email' =>$request ->email,
+        'created_at' => Carbon::now(), 
+    ]);
+
+    $notification = array(
+        'message' => 'You have successfully subscribed',
+        'alert-type' => 'success'
+    );
+
+    return redirect()->back()->with($notification);
+
+
+
+    
+}
+
+
+
 
 
 

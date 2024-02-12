@@ -54,7 +54,7 @@
                 <label class="form-label">Max Price </label>
                 <input type="text" name="max_price" class="form-control" required >
             </div>
-        </div><!-- Col -->
+        </div><!-- Col --> 
 
 
          <div class="col-sm-6">

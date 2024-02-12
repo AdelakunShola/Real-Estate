@@ -242,9 +242,9 @@
                     <ul class="info clearfix">
                         <li><i class="fas fa-map-marker-alt"></i>84 St. John Wood High Street, 
                         St Johns Wood</li>
-                        <li><i class="fas fa-phone"></i><a href="tel:03030571965">030 3057 1965</a></li>
+                        <li><i class="fas fa-phone"></i><a href="tel:03030571965">030 3057 1965</a></li> 
                     </ul>
-                    <div class="btn-box"><a href="agents-details.html">View Listing</a></div>
+                    <div class="btn-box"><a href="{{ route('agent.details',$item->id) }}">View Listing</a></div>
                 </div>
 
              @else

@@ -8,8 +8,10 @@ $ptypes = App\Models\PropertyType::latest()->get();
             <div class="auto-container">
                 <div class="inner-container">
                     <div class="content-box centred">
-                        <h2>Create Lasting Wealth Through Realshed</h2>
-                        <p>Amet consectetur adipisicing elit sed do eiusmod.</p>
+                        <h2>Find Your New Home </h2>
+                        <p>Find the perfect space for you. Enjoy flexible payment options With Abuja Homes.</p>
+                        
+
                     </div>
                     <div class="search-field">
                         <div class="tabs-box">
@@ -57,7 +59,7 @@ $ptypes = App\Models\PropertyType::latest()->get();
                 <div class="select-box">
                     <select name="ptype_id" class="wide">
                        <option data-display="All Type">All Type</option>
-                        @foreach($ptypes as $type)
+   @foreach($ptypes as $type)
    <option value="{{ $type->type_name }}">{{ $type->type_name }}</option>
    @endforeach
                     </select>

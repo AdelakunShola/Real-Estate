@@ -221,7 +221,7 @@ class PropertyController extends Controller
         return redirect()->route('all.property')->with($notification); 
 
     }// End Method 
-
+ 
 
  
     public function UpdatePropertyThambnail(Request $request){

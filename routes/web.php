@@ -548,7 +548,12 @@ Route::controller(ContactController::class)->group(function(){
 
 Route::controller(AgentPropertyController::class)->group(function(){
 
-     Route::get('/all/agents', 'AllAgent')->name('all.agent.page');
-     
-    
+     Route::get('/all/agents', 'AllAgent')->name('all.agent.page'); 
 });
+
+
+Route::controller(IndexController::class)->group(function(){
+
+     Route::post('/subscribe', 'Subscribe')->name('subscribe');  
+});
+
