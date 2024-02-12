@@ -184,7 +184,7 @@
             <div class="form-group">
                 <textarea name="message" placeholder="Message"></textarea>
             </div>
-            <div class="form-group message-btn">
+            <div class="form-group message-btn"> 
                 <button type="submit" class="theme-btn btn-one">Send Message</button>
             </div>
         </form>
@@ -238,9 +238,14 @@
 <div class="widget-title">
     <h5>Featured Properties</h5>
 </div>
+@php
+
+$property_feature = App\Models\Property::where('status','1')->where('featured',1)->latest()->get();
+
+ @endphp
 <div class="single-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
 
-	@foreach($featured as $feat)
+	@foreach($property_feature as $feat)
     <div class="feature-block-one">
         <div class="inner-box">
             <div class="image-box">

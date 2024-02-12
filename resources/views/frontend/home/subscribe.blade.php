@@ -5,7 +5,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 text-column">
                         <div class="text">
                             <span>Subscribe</span>
-                            <h2>Sign Up To Our Newsletter To Get The Latest News And Offers.</h2>
+                            <h2>Sign Up To Our Newsletter To Get The Latest Distress Sales Offers.</h2>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 form-column">
@@ -22,4 +22,4 @@
                 </div>
             </div>
         </section>
-        {{ route('subscribe') }}
+      

@@ -1,6 +1,8 @@
  @php
-$agents = App\Models\User::where('status','active')->where('role','agent')->orderBy('id','DESC')->limit(5)->get();
+$agents = App\Models\User::where('status','active')->where('role','agent')->orderBy('id','DESC')->limit(6)->get();
+$setting = App\Models\SiteSetting::find(1);
  @endphp
+
 
  <section class="team-section sec-pad centred bg-color-1">
             <div class="pattern-layer" style="background-image: url({{ asset('frontend/assets/images/shape/shape-1.png') }});"></div>
@@ -21,10 +23,10 @@ $agents = App\Models\User::where('status','active')->where('role','agent')->orde
                     <h4><a href="{{ route('agent.details',$item->id) }}">{{ $item->name }}</a></h4>
                     <span class="designation">{{ $item->email }}</span>
                     <ul class="social-links clearfix">
-                        <li><a href="index.html"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="index.html"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="index.html"><i class="fab fa-google-plus-g"></i></a></li>
-                    </ul>
+                        <li><a href="{{ $setting->facebook }}"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="{{ $setting->twitter }}"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="{{ $setting->instagram }}"><i class="fab fa-instagram"></i></a></li>
+                    </ul> 
                 </div>
             </div>
         </div>

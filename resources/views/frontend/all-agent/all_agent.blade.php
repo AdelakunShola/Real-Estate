@@ -4,6 +4,7 @@
 @php
 $agents = App\Models\User::where('status','active')->where('role','agent')->orderBy('id','DESC')->latest()->paginate(8);
 $property = App\Models\Property::where('status','1')->where('featured','1')->latest()->get();
+
  @endphp
 
  <!--Page Title-->
@@ -65,7 +66,7 @@ $property = App\Models\Property::where('status','1')->where('featured','1')->lat
                                     <div class="feature-block-one">
                                         <div class="inner-box">
                                             <div class="image-box">
-                                                <figure class="image"><img src="{{ (!empty($item->user->photo)) ? url('upload/agent_images/'.$item->user->photo) : url('upload/no_image.jpg') }}" alt=""></figure>
+                                                <figure class="image"><img src="{{ asset($item->property_thambnail  ) }}" alt=""></figure>
                                                 <div class="batch"><i class="icon-11"></i></div>
                                                 <span class="category">Featured</span>
                                             </div>

@@ -39,7 +39,8 @@ $states = App\Models\State::latest()->get();
 $ptypes = App\Models\PropertyType::latest()->get();
 $tbuy = App\Models\Property::where('property_status','buy')->get();
 $trent = App\Models\Property::where('property_status','rent')->get();
-
+$property_feature = App\Models\Property::where('status','1')->where('featured',1)->latest()->get();
+ 
  @endphp
 
   <form action="{{ route('all.property.search') }}" method="post" class="search-form">
@@ -129,7 +130,7 @@ $trent = App\Models\Property::where('property_status','rent')->get();
                                 </div>
                                 <div class="single-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
                                    
-                                @foreach($property as $item)
+                                @foreach($property_feature as $item)
                                     <div class="feature-block-one">
                                         <div class="inner-box">
                                             <div class="image-box">
