@@ -62,7 +62,7 @@
                                 <li><a href="property-details.html">For {{ $property->property_status }}</a></li>
                             </ul>
                             <div class="price-box pull-right">
-                                <h3>${{ $property->lowest_price }}</h3>
+                                <h3>&#8358;{{ Number_format($property->lowest_price,0,'.',',')}}</h3>
                             </div>
                         </div>
                         <ul class="other-option pull-right clearfix">
@@ -439,7 +439,7 @@
                 <div class="price-box clearfix">
                     <div class="price-info pull-left">
                         <h6>Start From</h6>
-                        <h4>${{ $item->lowest_price }}</h4>
+                        <h4>&#8358;{{ Number_format($item->lowest_price,0,'.',',')}}</h4>
                     </div>
                     <ul class="other-option pull-right clearfix">
                         <li><a href="property-details.html"><i class="icon-12"></i></a></li>

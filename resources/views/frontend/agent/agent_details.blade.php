@@ -34,11 +34,7 @@
         <h4>{{ $agent->name }}</h4>
         <span class="designation">{{ $agent->username }}</span>
     </div>
-    <ul class="social-list pull-right clearfix">
-        <li><a href="agents-details.html"><i class="fab fa-facebook-f"></i></a></li>
-        <li><a href="agents-details.html"><i class="fab fa-twitter"></i></a></li>
-        <li><a href="agents-details.html"><i class="fab fa-linkedin-in"></i></a></li>
-    </ul>
+   s
 </div>
 <div class="text">
     <p>Success isn’t really that difficult. There is a significant portion of the population here in North America, that actually want and need success to be hard! Why? So they then have a built-in excuse.when things don’t go their way! Pretty sad situation, to say the least. Have some fun and hypnotize yourself to be your very own Ghost of Christmas future”</p>
@@ -99,7 +95,7 @@
                         <div class="price-box clearfix">
                             <div class="price-info pull-left">
                                 <h6>Start From</h6>
-                                <h4>${{ $item->lowest_price }}</h4>
+                                <h4>&#8358;{{ Number_format($item->lowest_price,0,'.',',')}}</h4>
                             </div>
    
   @if($item->agent_id == Null)
@@ -223,7 +219,7 @@
 
 
 </div>
-<div class="category-widget sidebar-widget">
+<div class="category-widget sidebar-widget"> 
 <div class="widget-title">
     <h5>Status Of Property</h5>
 </div>
@@ -258,7 +254,7 @@ $property_feature = App\Models\Property::where('status','1')->where('featured',1
                 <div class="price-box clearfix">
                     <div class="price-info">
                         <h6>Start From</h6>
-                        <h4>${{ $feat->lowest_price }}</h4>
+                        <h4>&#8358;{{ Number_format($feat->lowest_price,0,'.',',')}}</h4>
                     </div>
                 </div>
                 <p>{{ $feat->short_descp }}</p>

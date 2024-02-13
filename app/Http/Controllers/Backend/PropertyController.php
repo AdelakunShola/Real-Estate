@@ -45,7 +45,6 @@ class PropertyController extends Controller
 
     public function StoreProperty(Request $request){
 
-        
 
         $amen = $request->amenities_id;
         $amenites = implode(",", $amen);
@@ -53,13 +52,6 @@ class PropertyController extends Controller
 
         $pcode = IdGenerator::generate(['table' => 'properties','field' => 'property_code','length' => 5, 'prefix' => 'PC' ]);
         
-
-        $video = $request->file('property_video');
-        $videoName = hexdec(uniqid()) . '.' . $video->getClientOriginalExtension();
-        $video->move('upload/property/videos/', $videoName); // Save the video file
-
-
-
 
         $image = $request->file('property_thambnail');
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
@@ -89,6 +81,7 @@ class PropertyController extends Controller
             'city' => $request->city,
             'state' => $request->state,
             'postal_code' => $request->postal_code,
+            'property_video' => $request-> property_video,
 
             'neighborhood' => $request->neighborhood,
             'latitude' => $request->latitude,
@@ -98,7 +91,6 @@ class PropertyController extends Controller
             'agent_id' => $request->agent_id,
             'status' => 1,
             'property_thambnail' => $save_url,
-            'property_video' => 'upload/property/videos/' . $videoName, // Store the correct file path or URL
             'created_at' => Carbon::now(), 
         ]);
 
@@ -252,33 +244,6 @@ class PropertyController extends Controller
         return redirect()->back()->with($notification); 
 
     }// End Method 
-
-
-    public function UpdatePropertyVideo(Request $request)
-{
-    $pro_id = $request->id;
-    $oldVideo = $request->old_video;
-
-    $video = $request->file('property_video');
-    $videoName = hexdec(uniqid()) . '.' . $video->getClientOriginalExtension();
-    $video->move('upload/property/videos/', $videoName);
-
-    if (file_exists($oldVideo)) {
-        unlink($oldVideo);
-    }
-
-    Property::findOrFail($pro_id)->update([
-        'property_video' => 'upload/property/videos/' . $videoName,
-        'updated_at' => Carbon::now(),
-    ]);
-
-    $notification = array(
-        'message' => 'Property Video Updated Successfully',
-        'alert-type' => 'success'
-    );
-
-    return redirect()->back()->with($notification);
-}
 
     
 

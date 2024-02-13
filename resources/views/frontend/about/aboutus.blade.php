@@ -108,7 +108,7 @@ $services = App\Models\OurService::latest()->get();
                                 <div class="inner-box">
                                     <div class="count-outer count-box">
                                         <span class="count-text" data-speed="1500" data-stop="1270">0</span>
-                                    </div>
+                                    </div> 
                                     <p>Total Professionals</p>
                                 </div>
                             </div>
@@ -154,9 +154,10 @@ $services = App\Models\OurService::latest()->get();
         <section class="testimonial-style-four sec-pad centred">
             <div class="auto-container">
                 <div class="sec-title">
-                    <h5>Testimonials</h5>
-                    <h2>What They Say About Us</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing sed do eiusmod tempor incididunt <br />labore dolore magna aliqua enim.</p>
+                <h5>Testimonials</h5>
+<h2>What They Say About Us</h2>
+<p>Discover why our clients rave about us. Read their testimonials and experience excellence in real estate services. <br>Your satisfaction is our priority.</p>
+
                 </div>
                 <div class="three-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
 
@@ -215,39 +216,7 @@ $services = App\Models\OurService::latest()->get();
 
 
         <!-- download-section -->
-        <section class="download-section bg-color-3">
-            <div class="pattern-layer" style="background-image: url({{asset('frontend/assets/images/shape/shape-3.png')}});"></div>
-            <div class="auto-container">
-                <div class="row clearfix">
-                    <div class="col-lg-6 col-md-6 col-sm-12 image-column">
-                        <div class="image-box">
-                            <figure class="image image-1 wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms"><img src="{{asset('frontend/assets/images/resource/download-1.png')}}" alt=""></figure>
-                            <figure class="image image-2 wow fadeInUp animated" data-wow-delay="300ms" data-wow-duration="1500ms"><img src="{{asset('frontend/assets/images/resource/download-2.png')}}" alt=""></figure>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 content-column">
-                        <div class="content_block_1">
-                            <div class="content-box">
-                                <span>Download</span>
-                                <h2>Download Our Android and IOS App for Experience</h2>
-                                <div class="download-btn">
-                                    <a href="/" class="app-store">
-                                        <i class="fab fa-apple"></i>
-                                        <p>Download on</p>
-                                        <h4>App Store</h4>
-                                    </a>
-                                    <a href="/" class="google-play">
-                                        <i class="fab fa-google-play"></i>
-                                        <p>Get It On</p>
-                                        <h4>Google Play</h4>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        @include('frontend.home.download')
         <!-- download-section end -->
 
 

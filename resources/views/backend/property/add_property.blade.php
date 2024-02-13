@@ -60,7 +60,7 @@
          <div class="col-sm-6">
             <div class="form-group mb-3">
                 <label class="form-label">Main Thambnail </label>
-                <input type="file" name="property_thambnail" class="form-control" onChange="mainThamUrl(this)"  >
+                <input type="file" name="property_thambnail" class="form-control" onChange="mainThamUrl(this)" required >
 
                 <img src="" id="mainThmb">
 
@@ -72,7 +72,7 @@
          <div class="col-sm-6">
             <div class="form-group mb-3">
                 <label class="form-label">Multiple Image </label>
-                <input type="file" name="multi_img[]" class="form-control" id="multiImg" multiple="" >
+                <input type="file" name="multi_img[]" class="form-control" id="multiImg" multiple="" required >
  
          <div class="row" id="preview_img"> </div>
 
@@ -133,7 +133,7 @@
         <div class="col-sm-3">
             <div class="mb-3">
                 <label class="form-label">State</label>
-                <select name="state" class="form-select" id="exampleFormControlSelect1">
+                <select name="state" class="form-select" id="exampleFormControlSelect1" required >
                 <option selected="" disabled="">Select State</option>
                @foreach($pstate as $state)
                 <option value="{{ $state->id }}">{{ $state->state_name }}</option>
@@ -161,18 +161,26 @@
         </div><!-- Col -->
        
 
-        <div class="col-sm-4">
+    <!--     <div class="col-sm-4">
     <div class="form-group mb-3">
         <label class="form-label">Property Video</label>
         <input type="file" name="property_video" class="form-control" onChange="mainVideoUrl(this)">
 
         <video controls id="mainVideo" style="max-width: 50%; height: auto;">
-            <!-- Provide a default source with a blank value -->
-            <source src="" type="video/mp4">
+              Provide a default source with a blank value -->
+           <!--  <source src="" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
-</div><!-- Col -->
+</div> -->
+
+
+<div class="col-sm-4">
+            <div class="mb-3">
+                <label class="form-label">Property Video</label>
+                <input type="text" name="property_video"  class="form-control" >
+            </div>
+        </div><!-- Col -->
 
 
 
@@ -224,7 +232,7 @@
         <div class="col-sm-4">
             <div class="mb-3">
                 <label class="form-label">Property Amenities </label>
-     <select name="amenities_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
+     <select name="amenities_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%" required>
 
                  @foreach($amenities as $ameni)
                 <option value="{{ $ameni->amenitis_name }}">{{ $ameni->amenitis_name }}</option>

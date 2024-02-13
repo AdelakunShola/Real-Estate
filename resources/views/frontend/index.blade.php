@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-  Easy Real Estate Complete Project  
+  Abuja Homes
 @endsection
 
         <!-- banner-section -->

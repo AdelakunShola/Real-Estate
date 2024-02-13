@@ -11,11 +11,10 @@
                         <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
                             <div class="footer-widget about-widget">
                                 <div class="widget-title">
-                                <h5 style="color: white;">About</h5>
+                                <h5 style="color: white;">About</h5> 
                                 </div>
                                 <div class="text">
-                                    <p>Lorem ipsum dolor amet consetetur adi pisicing elit sed eiusm tempor in cididunt ut labore dolore magna aliqua enim ad minim venitam</p>
-                                    <p>Quis nostrud exercita laboris nisi ut aliquip commodo.</p>
+                                    <p>Abuja Homes stands as a prominent online property listing platform in Nigeria. Our primary goal is to facilitate connections between individuals seeking residential and commercial properties for sale or rent throughout Nigeria.</p>
                                 </div>
                             </div>
                         </div>
@@ -60,8 +59,8 @@
                                 <div class="widget-content">
     <ul class="info-list clearfix">
         <li><i class="fas fa-map-marker-alt"></i>{{ $setting->company_address }}</li>
-        <li><i class="fas fa-microphone"></i><a href="tel:23055873407">+{{ $setting->support_phone }}</a></li>
-        <li><i class="fas fa-envelope"></i><a href="mailto:info@example.com">{{ $setting->email }}</a></li>
+        <li><i class="fas fa-microphone"></i><a href="tel:{{ $setting->support_phone }}">{{ $setting->support_phone }}</a></li>
+        <li><i class="fas fa-envelope"></i><a href="mailto:{{ $setting->email }}">{{ $setting->email }}</a></li>
     </ul>
                                 </div>
                             </div>

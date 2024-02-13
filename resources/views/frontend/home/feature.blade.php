@@ -3,11 +3,11 @@ $property = App\Models\Property::where('status','1')->where('featured','1')->lim
 @endphp
 
  <section class="feature-section sec-pad bg-color-1">
-            <div class="auto-container">
+            <div class="auto-container"> 
                 <div class="sec-title centred">
                     <h5>Features</h5>
                     <h2>Featured Property</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing sed do eiusmod tempor incididunt <br />labore dolore magna aliqua enim.</p>
+                    <p>Discover the epitome of luxury living. Unmatched elegance and unparalleled views await in this carefully curated property. <br>Your dream home is just a step away from sophistication and comfort.</p>
                 </div>
                 <div class="row clearfix">
 
@@ -42,7 +42,7 @@ $property = App\Models\Property::where('status','1')->where('featured','1')->lim
                         <div class="price-box clearfix">
                             <div class="price-info pull-left">
                                 <h6>Start From</h6>
-                                <h4>${{ $item->lowest_price }}</h4>
+                                <h4>&#8358;{{ Number_format($item->lowest_price,0,'.',',')}}</h4>
                             </div>
     <ul class="other-option pull-right clearfix">
         <li><a aria-label="Compare" class="action-btn" id="{{ $item->id }}" onclick="addToCompare(this.id)"><i class="icon-12"></i></a></li>

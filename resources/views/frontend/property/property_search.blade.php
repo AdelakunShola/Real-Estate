@@ -25,69 +25,80 @@
         <section class="property-page-section property-list">
             <div class="auto-container">
                 <div class="row clearfix">
-                    <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
+                <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
                         <div class="default-sidebar property-sidebar">
                             <div class="filter-widget sidebar-widget">
                                 <div class="widget-title">
                                     <h5>Property</h5>
                                 </div>
-                                <div class="widget-content">
-                                    <div class="select-box">
-                                        <select class="wide">
-                                           <option data-display="All Type">All Type</option>
-                                           <option value="1">Villa</option>
-                                           <option value="2">Commercial</option>
-                                           <option value="3">Residential</option>
-                                        </select>
-                                    </div>
-                                    <div class="select-box">
-                                        <select class="wide">
-                                           <option data-display="Select Location">Select Location</option>
-                                           <option value="1">New York</option>
-                                           <option value="2">California</option>
-                                           <option value="3">London</option>
-                                           <option value="4">Maxico</option>
-                                        </select>
-                                    </div>
-                                    <div class="select-box">
-                                        <select class="wide">
-                                           <option data-display="This Area Only">This Area Only</option>
-                                           <option value="1">New York</option>
-                                           <option value="2">California</option>
-                                           <option value="3">London</option>
-                                           <option value="4">Maxico</option>
-                                        </select>
-                                    </div>
-                                    <div class="select-box">
-                                        <select class="wide">
-                                           <option data-display="All Type">Max Rooms</option>
-                                           <option value="1">2+ Rooms</option>
-                                           <option value="2">3+ Rooms</option>
-                                           <option value="3">4+ Rooms</option>
-                                           <option value="4">5+ Rooms</option>
-                                        </select>
-                                    </div>
-                                    <div class="select-box">
-                                        <select class="wide">
-                                           <option data-display="Most Popular">Most Popular</option>
-                                           <option value="1">Villa</option>
-                                           <option value="2">Commercial</option>
-                                           <option value="3">Residential</option>
-                                        </select>
-                                    </div>
-                                    <div class="select-box">
-                                        <select class="wide">
-                                           <option data-display="All Type">Select Floor</option>
-                                           <option value="1">2x Floor</option>
-                                           <option value="2">3x Floor</option>
-                                           <option value="3">4x Floor</option>
-                                        </select>
-                                    </div>
-                                    <div class="filter-btn">
-                                        <button type="submit" class="theme-btn btn-one"><i class="fas fa-filter"></i>&nbsp;Filter</button>
-                                    </div>
-                                </div>
-                            </div>
+                               
+ @php
+$states = App\Models\State::latest()->get();
+$ptypes = App\Models\PropertyType::latest()->get();
+$tbuy = App\Models\Property::where('property_status','buy')->get();
+$trent = App\Models\Property::where('property_status','rent')->get();
+$property_feature = App\Models\Property::where('status','1')->where('featured',1)->latest()->get();
+
+ @endphp
+
+  <form action="{{ route('all.property.search') }}" method="post" class="search-form">
+    @csrf 
+
+    <div class="widget-content">
+        <div class="select-box">
+            <select name="property_status" class="wide">
+               <option data-display="All Type">All Status</option>
+               <option value="rent">Rent</option>
+               <option value="buy">Buy</option> 
+            </select>
+        </div>
+        <div class="select-box">
+            <select name="ptype_id" class="wide">
+               <option data-display="Type" selected="" disabled="" >Select Type</option>
+               
+              @foreach($ptypes as $type)
+   <option value="{{ $type->type_name }}">{{ $type->type_name }}</option>
+   @endforeach
+                
+            </select>
+        </div>
+        <div class="select-box">
+            <select name="state" class="wide">
+               <option data-display="State" selected="" disabled="" >Select State</option>
+               @foreach($states as $state)
+   <option value="{{ $state->state_name }}">{{ $state->state_name }}</option>
+   @endforeach
+            </select>
+        </div>
+        <div class="select-box">
+            <select name="bedrooms" class="wide">
+               <option data-display="Rooms">Max Rooms</option>
+               <option value="1">1 Rooms</option>
+               <option value="2">2 Rooms</option>
+               <option value="3">3 Rooms</option>
+               <option value="4">4 Rooms</option>
+               <option value="5">5 Rooms</option>
+            </select>
+        </div>
+        <div class="select-box">
+            <select name="bathrooms" class="wide">
+               <option data-display="BathRooms">Max BathRoom</option>
+               <option value="1">1 BathRoom</option>
+               <option value="2">2 BathRoom</option>
+               <option value="3">3 BathRoom</option>
+               <option value="4">4 BathRoom</option>
+               <option value="5">5 BathRoom</option>
+            </select>
+        </div>
+      
+        <div class="filter-btn">
+            <button type="submit" class="theme-btn btn-one"><i class="fas fa-filter"></i>&nbsp;Filter</button>
+        </div>
+    </div>
+</form>
+
+
+</div>
                             <div class="price-filter sidebar-widget">
                                 <div class="widget-title">
                                     <h5>Select Price Range</h5>
@@ -106,9 +117,43 @@
                                     <h5>Status Of Property</h5>
                                 </div>
                                 <ul class="category-list clearfix">
-    <li><a href="{{ route('rent.property') }}">For Rent <span>(200)</span></a></li>
-   <li><a href="{{ route('buy.property') }}">For Buy <span>(700)</span></a></li>
+       <li><a href="{{ route('rent.property') }}">For Rent <span>{{count($trent)}}</span></a></li>
+   <li><a href="{{ route('buy.property') }}">For Buy <span>{{count($tbuy)}}</span></a></li>
                                 </ul>
+                            </div>
+
+
+                            <div class="featured-widget sidebar-widget">
+                                <div class="widget-title">
+                                    <h5>Featured Properties</h5>
+                                </div>
+                                <div class="single-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
+                                   
+                                @foreach($property_feature as $item)
+                                    <div class="feature-block-one">
+                                        <div class="inner-box">
+                                            <div class="image-box">
+                                                <figure class="image"><img src="{{ asset($item->property_thambnail  ) }}" alt=""></figure>
+                                                <div class="batch"><i class="icon-11"></i></div>
+                                                <span class="category">Featured</span>
+                                            </div>
+                                            <div class="lower-content">
+                                                <div class="title-text"><h4><a href="{{ url('property/details/'.$item->id.'/'.$item->property_slug) }}">{{ $item->property_name }}</a></h4></div>
+                                                <div class="price-box clearfix">
+                                                    <div class="price-info">
+                                                        <h6>Start From</h6>
+                                                        <h4>&#8358;{{ Number_format($item->lowest_price,0,'.',',')}}</h4>
+                                                    </div>
+                                                </div>
+                                                <p>{{ $item->short_descp }}</p>
+                                                <div class="btn-box"><a href="{{ url('property/details/'.$item->id.'/'.$item->property_slug) }}" class="theme-btn btn-two">See Details</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach 
+
+
+                                </div>
                             </div>
                              
                         </div>
@@ -149,7 +194,7 @@
                         <div class="price-box clearfix">
                              <div class="price-info pull-left">
                                 <h6>Start From</h6>
-                                <h4>${{ $item->lowest_price }}</h4>
+                                <h4>&#8358;{{ Number_format($item->lowest_price,0,'.',',')}}</h4>
                             </div>
    
   @if($item->agent_id == Null)

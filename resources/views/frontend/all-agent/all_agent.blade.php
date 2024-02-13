@@ -8,13 +8,15 @@ $property = App\Models\Property::where('status','1')->where('featured','1')->lat
  @endphp
 
  <!--Page Title-->
- <section class="page-title centred" style="background-image: url(assets/images/background/page-title.jpg);">
+
+        <section class="cta-section page-title centred  bg-color-2">
+            <div class="pattern-layer" style="background-image: url({{ asset('frontend/assets/images/shape/shape-2.png') }});"></div>
             <div class="auto-container">
                 <div class="content-box clearfix">
-                    <h1>Agents List View</h1>
+                    <h1>Agents List Page</h1>
                     <ul class="bread-crumb clearfix">
-                        <li><a href="index.html">Home</a></li>
-                        <li>Agents List View</li>
+                        <li><a href="/">Home</a></li>
+                        <li>Agents List Page</li>
                     </ul>
                 </div>
             </div>
@@ -56,38 +58,7 @@ $property = App\Models\Property::where('status','1')->where('featured','1')->lat
                                 </div>
                             </div>
                             
-                            <div class="featured-widget sidebar-widget">
-                                <div class="widget-title">
-                                    <h5>Featured Properties</h5>
-                                </div>
-                                <div class="single-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
-                                   
-                                @foreach($property as $item)
-                                    <div class="feature-block-one">
-                                        <div class="inner-box">
-                                            <div class="image-box">
-                                                <figure class="image"><img src="{{ asset($item->property_thambnail  ) }}" alt=""></figure>
-                                                <div class="batch"><i class="icon-11"></i></div>
-                                                <span class="category">Featured</span>
-                                            </div>
-                                            <div class="lower-content">
-                                                <div class="title-text"><h4><a href="{{ url('property/details/'.$item->id.'/'.$item->property_slug) }}">{{ $item->property_name }}</a></h4></div>
-                                                <div class="price-box clearfix">
-                                                    <div class="price-info">
-                                                        <h6>Start From</h6>
-                                                        <h4>${{ $item->lowest_price }}</h4>
-                                                    </div>
-                                                </div>
-                                                <p>{{ $item->short_descp }}</p>
-                                                <div class="btn-box"><a href="{{ url('property/details/'.$item->id.'/'.$item->property_slug) }}" class="theme-btn btn-two">See Details</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endforeach 
-
-
-                                </div>
-                            </div>
+                            @include('frontend.home.feature_sidebar')
 
 
 
@@ -108,11 +79,7 @@ $property = App\Models\Property::where('status','1')->where('featured','1')->lat
                                                         <h4><a href="{{ route('agent.details',$item->id) }}">{{ $item->name }}</a></h4>
                                                         <span class="designation">{{ $item->username }}</span>
                                                     </div>
-                                                    <ul class="social-list pull-right clearfix">
-                                                        <li><a href="agents-list.html"><i class="fab fa-facebook-f"></i></a></li>
-                                                        <li><a href="agents-list.html"><i class="fab fa-twitter"></i></a></li>
-                                                        <li><a href="agents-list.html"><i class="fab fa-linkedin-in"></i></a></li>
-                                                    </ul>
+                                                    
                                                 </div>
                                                 
                                                 <ul class="info clearfix">

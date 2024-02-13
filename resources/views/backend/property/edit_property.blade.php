@@ -142,6 +142,13 @@
                  <input type="text" name="neighborhood"  class="form-control" value="{{ $property->neighborhood }}" >
             </div>
         </div><!-- Col -->
+
+        <div class="col-sm-4">
+            <div class="mb-3">
+                <label class="form-label">Property Video</label>
+                 <input type="text" name="neighborhood"  class="form-control" value="{{ $property->property_video }}" >
+            </div>
+        </div><!-- Col -->
  
 
     </div><!-- Row -->
@@ -325,55 +332,6 @@
   </div>
 </div> 
   <!--    /// End  Property Main Thambnail Image Update //// -->
-
-
-
-  <!-- /// Property Main Video Update //// -->
-<div class="page-content" style="margin-top: -35px;">
-    <div class="row profile-body">
-        <div class="col-md-12 col-xl-12 middle-wrapper">
-            <div class="row">
-                <div class="card">
-                    <div class="card-body">
-                        <h6 class="card-title">Edit Main Video</h6>
-
-                        <form method="post" action="{{ route('update.property.video') }}" id="myForm" enctype="multipart/form-data">
-                            @csrf
-
-                            <input type="hidden" name="id" value="{{ $property->id }}">
-                            <input type="hidden" name="old_video" value="{{ $property->property_video }}">
-
-                            <div class="row mb-3">
-                            <div class="form-group col-md-6">
-                            <label class="form-label">Main Video </label>
-                            <input type="file" name="property_video" class="form-control" onChange="mainVideoUrl(this)">
-
-                            <video controls id="mainVideo" style="max-width: 50%;">
-                                <!-- Provide a default source with a blank value -->
-                                <source src="" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-
-                                <div class="form-group col-md-6">
-                                    <label class="form-label">Current Video</label>
-                                    <video controls style="max-width: 50%; height: auto;">
-                                        <source src="{{ asset($property->property_video) }}" type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </div>
-                            </div><!-- Col -->
-
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /// End Property Main Video Update //// -->
-
 
 
 
