@@ -70,7 +70,7 @@ class PropertyController extends Controller
             'lowest_price' => $request->lowest_price,
             'max_price' => $request->max_price,
             'short_descp' => $request->short_descp,
-            'long_descp' => $request->long_descp,
+            'long_descp' => $request->long_descp, 
             'bedrooms' => $request->bedrooms,
             'bathrooms' => $request->bathrooms,
             'garage' => $request->garage,
