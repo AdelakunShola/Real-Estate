@@ -129,10 +129,29 @@
         <li><span>Zip/Postal Code:</span> {{ $property->postal_code }}</li>
         <li><span>City:</span> {{ $property->city }}</li>
     </ul>
-    <div class="google-map-area">
+
+
+    <!--<div class="google-map-area">
         <div class="google-map" id="contact-google-map" data-map-zoom="12">
         </div>
+    </div>-->
+
+
+    <div class="google-map-area">
+    <div 
+        class="google-map" 
+        id="contact-google-map" 
+        data-map-lat="{{ $property->latitude }}" 
+        data-map-lng="{{ $property->longitude }}" 
+        data-icon-path="{{ asset('frontend/assets/images/icons/map-marker.png') }}"  
+        data-map-title="{{ $property['pstate']['state_name'] }}" 
+        data-map-zoom="12" 
+        data-markers='{
+            "marker-1": [{{ $property->latitude }}, {{ $property->longitude }}, "","{{ asset('frontend/assets/images/icons/map-marker.png') }}"]
+        }'>
+
     </div>
+</div>
 </div>
 
                             <div class="nearby-box content-widget">
@@ -492,12 +511,12 @@
                 </div>
             </div>
         </section>
-        <!-- subscribe-section end -->
+        <!-- subscribe-section end 
 
 
 
 
-   
+  google map api
         <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>
         <script>
     function initMap() {
@@ -521,7 +540,7 @@
             }
         });
     }
-</script>
+</script>-->
 
 
 @endsection

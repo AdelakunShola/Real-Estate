@@ -133,7 +133,7 @@
         <div class="col-sm-3">
             <div class="mb-3">
                 <label class="form-label">State</label>
-                <select name="state" class="form-select" id="exampleFormControlSelect1" required >
+                <select name="state" class="form-select" id="exampleFormControlSelect1" required>
                 <option selected="" disabled="">Select State</option>
                @foreach($pstate as $state)
                 <option value="{{ $state->id }}">{{ $state->state_name }}</option>
@@ -232,7 +232,7 @@
         <div class="col-sm-4">
             <div class="mb-3">
                 <label class="form-label">Property Amenities </label>
-     <select name="amenities_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%" required>
+     <select name="amenities_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
 
                  @foreach($amenities as $ameni)
                 <option value="{{ $ameni->amenitis_name }}">{{ $ameni->amenitis_name }}</option>

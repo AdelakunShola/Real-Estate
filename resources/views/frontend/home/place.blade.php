@@ -13,7 +13,7 @@
 
 
 
- @endphp
+ @endphp 
 
 
  <section class="place-section sec-pad">

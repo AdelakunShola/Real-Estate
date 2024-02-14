@@ -45,6 +45,7 @@ class PropertyController extends Controller
 
     public function StoreProperty(Request $request){
 
+    
 
         $amen = $request->amenities_id;
         $amenites = implode(",", $amen);
