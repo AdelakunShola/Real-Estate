@@ -270,9 +270,20 @@ Route::controller(BlogController::class)->group(function(){
 
 
  // Testimonials  All Route 
+Route::controller(BlogController::class)->group(function(){
+
+     Route::get('/all/post', 'AllPost')->name('all.post'); 
+     Route::get('/add/post', 'AddPost')->name('add.post');
+     Route::post('/store/post', 'StorePost')->name('store.post'); 
+     Route::get('/edit/post/{id}', 'EditPost')->name('edit.post');
+     Route::post('/update/post', 'UpdatePost')->name('update.post');
+     Route::get('/delete/post/{id}', 'DeletePost')->name('delete.post');  
+
+});
+
 Route::controller(HomePageAdsController::class)->group(function(){
 
-     Route::get('/ads/request', 'AdsRequest')->name('ads.request'); 
+     Route::get('/ads/request', 'adsRequest')->name('ads.request'); 
  
 
 });
@@ -440,6 +451,17 @@ Route::controller(AgentPropertyController::class)->group(function(){
 
       Route::get('/package/history', 'PackageHistory')->name('package.history');
       Route::get('/agent/package/invoice/{id}', 'AgentPackageInvoice')->name('agent.package.invoice');
+     
+
+});
+
+
+ // Agent Buy Package Route from admin 
+ Route::controller(HomePageAdsController::class)->group(function(){
+
+     Route::get('/agent/ads', 'AgentAds')->name('agent.place.ads');
+     Route::post('/store/agent/ads', 'StoreAgentAds')->name('store.agent.ad');
+     
      
 
 });

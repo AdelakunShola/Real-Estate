@@ -286,19 +286,19 @@
 
 
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#Post" role="button" aria-expanded="false" aria-controls="uiComponents">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ads" role="button" aria-expanded="false" aria-controls="uiComponents">
               <i class="link-icon" data-feather="feather"></i>
               <span class="link-title">Manage Ads</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse" id="Post">
+            <div class="collapse" id="ads">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="{{ route('ads.request') }}" class="nav-link">Ads Request </a>
+                  <a href="{{ route('ads.request') }}" class="nav-link">All Ads </a>
                 </li>
 
                 <li class="nav-item">
-                  <a href="{{ route('add.post') }}" class="nav-link">Approved Ads</a>
+                  <a href="" class="nav-link">Approved Ads</a>
                 </li>
                 
                 
