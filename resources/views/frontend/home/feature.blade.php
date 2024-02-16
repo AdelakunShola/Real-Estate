@@ -1,5 +1,5 @@
 @php
-$property = App\Models\Property::where('status','1')->where('featured','1')->limit(3)->get();
+$property = App\Models\Property::where('status','1')->where('featured','1')->orderBy('created_at','ASC')->take(3)->get();
 @endphp
 
  <section class="feature-section sec-pad bg-color-1">
@@ -42,7 +42,7 @@ $property = App\Models\Property::where('status','1')->where('featured','1')->lim
                         <div class="price-box clearfix">
                             <div class="price-info pull-left">
                                 <h6>Start From</h6>
-                                <h4>&#8358;{{ Number_format($item->lowest_price,0,'.',',')}}</h4>
+                                <h4>&#8358;{{ $item->lowest_price,0}}</h4>
                             </div>
     <ul class="other-option pull-right clearfix">
         <li><a aria-label="Compare" class="action-btn" id="{{ $item->id }}" onclick="addToCompare(this.id)"><i class="icon-12"></i></a></li>

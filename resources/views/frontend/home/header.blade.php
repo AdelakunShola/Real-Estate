@@ -62,7 +62,7 @@
      <li><a href="{{ url('/') }}"><span>Home</span></a> </li>
      <li><a href="{{ route('about.us') }}"><span>About Us </span></a> </li>
              
-<li class="dropdown"><a href="#"><span>Property</span></a>
+<li class="dropdown"><a href="{{ route('all.property.listing') }}"><span>Property</span></a>
     <ul>
         <li><a href="{{ route('rent.property') }}">Rent Property</a></li>
         <li><a href="{{ route('buy.property') }}">Buy Property </a></li>

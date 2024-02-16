@@ -1,7 +1,7 @@
 @extends('frontend.frontend_dashboard')
 @section('main')
 @section('title')
-  {{ $blog->post_title }} | Easy RealEstate  
+  {{ $blog->post_title }} | AbujaHomes RealEstate  
 @endsection
 
 
@@ -84,7 +84,7 @@
                 <div class="text">
                 	<p>{{ $com->subject  }}</p>
                     <p>{{ $com->message  }}</p>
-                    <a href="blog-details.html"><i class="fas fa-share"></i>Reply</a>
+                    
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@
                 </div>
                 <div class="text">
                     <p>{{ $rep->message }}</p>
-                    <a href="blog-details.html"><i class="fas fa-share"></i>Reply</a>
+                    
                 </div>
             </div>
         </div>

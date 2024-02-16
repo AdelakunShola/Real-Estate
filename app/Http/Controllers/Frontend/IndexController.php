@@ -137,6 +137,15 @@ class IndexController extends Controller
     }// End Method 
 
 
+    public function AllPropertyListing(){
+
+        $property = Property::where('status','1')->latest()->paginate(10);
+
+        return view('frontend.property.all_property',compact('property'));
+
+    }// End Method 
+
+
     public function RentProperty(){
 
         $property = Property::where('status','1')->where('property_status','rent')->paginate(8);
@@ -190,7 +199,7 @@ class IndexController extends Controller
         ->whereHas('type', function($q) use ($stype){
             $q->where('type_name','like' , '%' .$stype. '%');
          })
-        ->get(10);
+        ->paginate(10);
 
         return view('frontend.property.property_search',compact('property'));
 

@@ -1,7 +1,7 @@
   @extends('frontend.frontend_dashboard')
    @section('main')
    @section('title')
-  User Login | Easy RealEstate  
+  User Login | AbujaHomes RealEstate  
 @endsection
 
   <!--Page Title-->

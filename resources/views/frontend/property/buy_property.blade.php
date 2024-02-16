@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-  Buy Property Easy RealEstate  
+  Buy Property From AbujaHomes  
 @endsection
 
 
@@ -146,7 +146,7 @@ $property_feature = App\Models\Property::where('status','1')->where('featured',1
                                                 <div class="price-box clearfix">
                                                     <div class="price-info">
                                                         <h6>Start From</h6>
-                                                        <h4>&#8358;{{ Number_format($item->lowest_price,0,'.',',')}}</h4>
+                                                        <h4>&#8358;{{ $item->lowest_price}}</h4>
                                                     </div>
                                                 </div>
                                                 <p>{{ $item->short_descp }}</p>
@@ -166,7 +166,7 @@ $property_feature = App\Models\Property::where('status','1')->where('featured',1
                         <div class="property-content-side">
                             <div class="item-shorting clearfix">
                                 <div class="left-column pull-left">
-            <h5>Search Reasults: <span>Showing {{ count($property) }} Listings</span></h5>
+            <h5>Search Results: <span>Showing {{ count($property) }} Listings</span></h5>
                                 </div>
                                 <div class="right-column pull-right clearfix">
                                      
@@ -198,7 +198,7 @@ $property_feature = App\Models\Property::where('status','1')->where('featured',1
                         <div class="price-box clearfix">
                             <div class="price-info pull-left">
                                 <h6>Start From</h6>
-                                <h4>&#8358;{{ Number_format($item->lowest_price,0,'.',',')}}</h4>
+                                <h4>&#8358;{{ $item->lowest_price}}</h4>
                             </div>
                            
    

@@ -38,6 +38,8 @@
                 <option selected="" disabled="">Select Status</option>
                 <option value="rent" {{ $property->property_status == 'rent' ? 'selected' : '' }} >For Rent</option>
                 <option value="buy" {{ $property->property_status == 'buy' ? 'selected' : '' }}>For Buy</option> 
+                <option value="rented" {{ $property->property_status == 'rented' ? 'selected' : '' }}>Rented</option> 
+                <option value="sold" {{ $property->property_status == 'sold' ? 'selected' : '' }}>Sold</option> 
             </select>
             </div>
         </div><!-- Col -->
@@ -143,70 +145,13 @@
             </div>
         </div><!-- Col -->
 
+
         <div class="col-sm-4">
-    <div class="mb-3">
-        <label class="form-label">Property Video</label>
-
-        @if ($property->property_video)
-            @php
-                // Extract video ID
-                $videoId = '';
-
-                // Extract video ID for Instagram
-                if (strpos($property->property_video, 'instagram.com') !== false) {
-                    $videoId = basename(parse_url($property->property_video, PHP_URL_PATH));
-                    $embedCode = '<blockquote class="instagram-media" data-instgrm-permalink="' . $property->property_video . '" data-instgrm-version="13"></blockquote>';
-                    // Add Instagram script to render embedded content
-                    $instagramScript = '<script async src="https://www.instagram.com/embed.js"></script>';
-                }
-
-                // Extract video ID for YouTube
-                elseif (strpos($property->property_video, 'youtube.com') !== false) {
-                    parse_str(parse_url($property->property_video, PHP_URL_QUERY), $videoId);
-                    $videoId = $videoId['v'] ?? '';
-                    $embedCode = '<iframe width="100%" height="315" src="https://www.youtube.com/embed/' . $videoId . '" frameborder="0" allowfullscreen></iframe>';
-                }
-
-                // Extract video ID for Facebook
-                elseif (strpos($property->property_video, 'facebook.com') !== false) {
-                    $embedCode = '<iframe src="' . $property->property_video . '" width="100%" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>';
-                }
-
-                // Extract tweet ID for Twitter
-                elseif (strpos($property->property_video, 'twitter.com') !== false) {
-                    $videoId = pathinfo(parse_url($property->property_video, PHP_URL_PATH), PATHINFO_FILENAME);
-                    $embedCode = '<blockquote class="twitter-tweet"><a href="' . $property->property_video . '"></a></blockquote>';
-                    // Add Twitter script to render embedded content
-                    $twitterScript = '<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>';
-                }
-
-                // Add other platforms as needed
-            @endphp
-
-            @if (isset($embedCode))
-                <!-- If video ID is extracted, display embed code -->
-                {!! $embedCode !!}
-                @if (isset($instagramScript))
-                    {!! $instagramScript !!}
-                @endif
-                @if (isset($twitterScript))
-                    {!! $twitterScript !!}
-                @endif
-            @else
-                <!-- Display a message or handle the case where the video ID cannot be extracted -->
-                <p>Invalid video link</p>
-            @endif
-        @endif
-
-        <input type="text" name="property_video" class="form-control" value="{{ $property->property_video }}" placeholder="Enter video link">
-    </div>
-</div><!-- Col -->
-
-
-
-
-
-
+            <div class="mb-3">
+                <label class="form-label">Property Youtube Video Link</label>
+                 <input type="text" name="property_video"  class="form-control" value="{{ $property->property_video }}" >
+            </div>
+        </div><!-- Col -->
  
 
     </div><!-- Row -->

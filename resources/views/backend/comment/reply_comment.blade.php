@@ -48,7 +48,7 @@
 
           <div class="mb-3">
  <label for="exampleInputEmail1" class="form-label">Subject   </label>
-           <input type="text" name="subject" class="form-control " > 
+           <input type="text" name="subject" class="form-control "  required> 
         </div>
 
 

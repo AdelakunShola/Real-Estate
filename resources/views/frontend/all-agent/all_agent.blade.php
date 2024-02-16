@@ -23,7 +23,10 @@ $property = App\Models\Property::where('status','1')->where('featured','1')->lat
         </section>
         <!--End Page Title-->
 
+        @php
+$states = App\Models\State::latest()->get();
 
+ @endphp
         <!-- agents-page-section -->
         <section class="agents-page-section agents-list">
             <div class="auto-container">
@@ -35,21 +38,20 @@ $property = App\Models\Property::where('status','1')->where('featured','1')->lat
                                     <h5>Find Agent</h5>
                                 </div>
                                 <div class="search-inner">
-                                    <form action="agents-list.html">
+                                    <form action="">
                                         <div class="form-group">
                                             <input type="text" name="name" placeholder="Enter Agent Name" required="">
                                         </div>
                                        
                                         <div class="form-group">
-                                            <div class="select-box">
-                                                <select class="wide">
-                                                   <option data-display="All Cities">All Cities</option>
-                                                   <option value="1">New York</option>
-                                                   <option value="2">California</option>
-                                                   <option value="3">London</option>
-                                                   <option value="4">Maxico</option>
-                                                </select>
-                                            </div>
+                                        <div class="select-box">
+            <select name="state" class="wide">
+               <option data-display="State" selected="" disabled="" >Select State</option>
+               @foreach($states as $state)
+   <option value="{{ $state->state_name }}">{{ $state->state_name }}</option>
+   @endforeach
+            </select>
+        </div>
                                         </div>
                                         <div class="form-group">
                                             <button class="theme-btn btn-one">Search Agent</button>

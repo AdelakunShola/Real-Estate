@@ -51,7 +51,7 @@ class PropertyController extends Controller
         $amenites = implode(",", $amen);
         // dd($amenites);
 
-        $pcode = IdGenerator::generate(['table' => 'properties','field' => 'property_code','length' => 5, 'prefix' => 'PC' ]);
+        $pcode = IdGenerator::generate(['table' => 'properties','field' => 'property_code','length' => 5, 'prefix' => 'AH' ]);
         
 
         $image = $request->file('property_thambnail');

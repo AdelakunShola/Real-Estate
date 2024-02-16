@@ -95,7 +95,7 @@
                         <div class="price-box clearfix">
                             <div class="price-info pull-left">
                                 <h6>Start From</h6>
-                                <h4>&#8358;{{ Number_format($item->lowest_price,0,'.',',')}}</h4>
+                                <h4>&#8358;{{ $item->lowest_price}}</h4>
                             </div>
    
   @if($item->agent_id == Null)
@@ -254,7 +254,7 @@ $property_feature = App\Models\Property::where('status','1')->where('featured',1
                 <div class="price-box clearfix">
                     <div class="price-info">
                         <h6>Start From</h6>
-                        <h4>&#8358;{{ Number_format($feat->lowest_price,0,'.',',')}}</h4>
+                        <h4>&#8358;{{ $feat->lowest_price }}</h4>
                     </div>
                 </div>
                 <p>{{ $feat->short_descp }}</p>

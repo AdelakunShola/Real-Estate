@@ -468,6 +468,9 @@ Route::controller(AgentPropertyController::class)->group(function(){
  // Send Message from Agent Details Page 
    Route::post('/agent/details/message', [IndexController::class, 'AgentDetailsMessage'])->name('agent.details.message');
 
+   // Get All Property Listing
+   Route::get('/all/property/listing', [IndexController::class, 'AllPropertyListing'])->name('all.property.listing');
+
    // Get All Rent Property 
    Route::get('/rent/property', [IndexController::class, 'RentProperty'])->name('rent.property');
 

@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-  {{ $property->property_name }} | Easy RealEstate  
+  {{ $property->property_name }} | AbujaHomes RealEstate  
 @endsection
 
 
@@ -62,7 +62,7 @@
                                 <li><a href="property-details.html">For {{ $property->property_status }}</a></li>
                             </ul>
                             <div class="price-box pull-right">
-                                <h3>&#8358;{{ Number_format($property->lowest_price,0,'.',',')}}</h3>
+                                <h3>&#8358;{{ $property->lowest_price}}</h3>
                             </div>
                         </div>
                         <ul class="other-option pull-right clearfix">
@@ -188,13 +188,43 @@
     
                                 </div>
                             </div>
-                            <div class="statistics-box content-widget">
+                           <div class="statistics-box content-widget">
                                 <div class="title-box">
                                     <h4>Property Video </h4>
                                 </div>
 <figure class="image-box">
-   <iframe width="700" height="415" src="{{ $property->property_video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    @if ($property->property_video)
+        @php
+            // Extract video ID for YouTube
+            $videoId = '';
+            if (preg_match('/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $property->property_video, $matches)) {
+                $videoId = $matches[1];
+            }
+
+            if (!empty($videoId)) {
+                // Append ?title=0 to hide video title
+                $embedCode = '<iframe width="700" height="415" src="https://www.youtube.com/embed/' . $videoId . '?modestbranding=1&title=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+            } else {
+                $embedCode = '<p>Invalid YouTube link</p>';
+            }
+        @endphp
+
+        @if (isset($embedCode))
+            <!-- If video ID is extracted, display embed code -->
+            {!! $embedCode !!}
+        @else
+            <!-- Display a message or handle the case where the video ID cannot be extracted -->
+            <p>Invalid video link</p>
+        @endif
+    @else
+        <!-- Handle the case where there is no video link -->
+        <p>No video available</p>
+    @endif
 </figure>
+
+
+
+
                             </div>
                           
 
@@ -458,7 +488,7 @@
                 <div class="price-box clearfix">
                     <div class="price-info pull-left">
                         <h6>Start From</h6>
-                        <h4>&#8358;{{ Number_format($item->lowest_price,0,'.',',')}}</h4>
+                        <h4>&#8358;{{ $item->lowest_price}}</h4>
                     </div>
                     <ul class="other-option pull-right clearfix">
                         <li><a href="property-details.html"><i class="icon-12"></i></a></li>

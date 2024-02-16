@@ -278,7 +278,7 @@ class BlogController extends Controller
     }// End Method
 
 
-    public function AdminCommentReply($id){
+    public function AdminCommentReply($id){ 
 
         $comment = Comment::where('id',$id)->first();
         return view('backend.comment.reply_comment',compact('comment'));
@@ -306,7 +306,7 @@ class BlogController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->route('admin.blog.comment')->with($notification); 
 
     }// End Method
 
