@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\ChatController;
 use App\Http\Controllers\Agent\AgentPropertyController;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\HomePageAdsController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\CompareController;
@@ -269,14 +270,10 @@ Route::controller(BlogController::class)->group(function(){
 
 
  // Testimonials  All Route 
-Route::controller(BlogController::class)->group(function(){
+Route::controller(HomePageAdsController::class)->group(function(){
 
-     Route::get('/all/post', 'AllPost')->name('all.post'); 
-     Route::get('/add/post', 'AddPost')->name('add.post');
-     Route::post('/store/post', 'StorePost')->name('store.post'); 
-     Route::get('/edit/post/{id}', 'EditPost')->name('edit.post');
-     Route::post('/update/post', 'UpdatePost')->name('update.post');
-     Route::get('/delete/post/{id}', 'DeletePost')->name('delete.post');  
+     Route::get('/ads/request', 'AdsRequest')->name('ads.request'); 
+ 
 
 });
 
