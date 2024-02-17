@@ -387,6 +387,15 @@ Route::controller(ContactController::class)->group(function(){
 });
 
 
+Route::controller(HomePageAdsController::class)->group(function(){
+
+     Route::get('/edit/ads/{id}', 'EditAds')->name('edit.ads');
+     Route::post('/update/ads/{id}', 'UpdateAds')->name('update.ads');
+         
+
+});
+
+
 }); // End Group Admin Middleware
 
 
@@ -461,9 +470,6 @@ Route::controller(AgentPropertyController::class)->group(function(){
 
      Route::get('/agent/ads', 'AgentAds')->name('agent.place.ads');
      Route::post('/store/agent/ads', 'StoreAgentAds')->name('store.agent.ad');
-     
-     
-
 });
 
 

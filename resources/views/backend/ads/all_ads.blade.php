@@ -45,8 +45,7 @@
                         <td>{{ $item->status }}</td>
                         <td>
          
-       <a href="" class="btn btn-inverse-danger" id="edit"> Edit  </a>
-       <a href="" class="btn btn-inverse-danger" id="delete"> Delete  </a>
+       <a href="{{ route('edit.ads',$item->id) }}" class="btn btn-inverse-danger" id="edit"> Edit  </a>
                         </td> 
                       </tr>
                      @endforeach
