@@ -59,25 +59,22 @@ class HomePageAdsController extends Controller
     }//end method
 
 
-    public function UpdateAds(Request $request){
-
-        $ads_id = $request->id;
-
-        HomePageAds::findOrFail($ads_id)->update([ 
-
-            
-            
-            'status' => 1,
-            'created_at' => Carbon::now(), 
-            
+    public function UpdateAds(Request $request, $id){
+        HomePageAds::findOrFail($id)->update([
+            'type' => $request->type,
+            'image_dimension' => $request->image_dimension,
+            'title' => $request->title,
+            'url' => $request->url,
+            'status' => $request->status, // You can adjust this value as needed
+            'created_at' => Carbon::now(),
         ]);
 
           $notification = array(
-            'message' => 'Ad Created Successfully',
+            'message' => 'Ad Updated Successfully',
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect()->route('ads.request')->with($notification);
 
     }//end method
     

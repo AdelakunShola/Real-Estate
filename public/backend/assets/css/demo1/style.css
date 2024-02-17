@@ -1,9 +1,6 @@
 @charset "UTF-8";
-/*
-* NobleUI - HTML Bootstrap 5 Admin Dashboard Template v2.0.2 (https://nobleui.com/)
-* Copyright © 2022 NobleUI
-* Licensed under ThemeForest License
-*/
+
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -19585,7 +19582,7 @@ body {
   z-index: 999;
 }
 .sidebar .sidebar-header {
-  background: #fff;
+  background: #0c1427;
   height: 60px;
   border-bottom: 1px solid #e9ecef;
   display: flex;
@@ -19847,7 +19844,7 @@ body {
   height: 100%;
   -webkit-box-shadow: 0 8px 10px 0 rgba(183, 192, 206, 0.2);
   box-shadow: 0 8px 10px 0 rgba(183, 192, 206, 0.2);
-  background: #fff;
+  background: #0c1427;
 }
 .sidebar .sidebar-body .nav {
   display: flex;
@@ -20038,7 +20035,7 @@ body {
   right: -232px;
   top: 130px;
   width: 232px;
-  background: #fff;
+  background: #0c1427;
   -webkit-box-shadow: -3px 0 10px 0 rgba(183, 192, 206, 0.2);
   box-shadow: -3px 0 10px 0 rgba(183, 192, 206, 0.2);
   z-index: 999;
@@ -20059,7 +20056,7 @@ body {
   top: 0;
   padding: 12px;
   border-radius: 4px 0 0 4px;
-  background: #fff;
+  background: #0c1427;
   -webkit-box-shadow: -3px 0 10px 0 rgba(183, 192, 206, 0.2);
   box-shadow: -3px 0 10px 0 rgba(183, 192, 206, 0.2);
 }
