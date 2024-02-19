@@ -46,7 +46,7 @@
 <div class="outer-box">
 <div class="main-box">
 <div class="logo-box">
-    <figure class="logo"><a href="{{ url('/') }}"><img src="{{ asset($setting->logo) }}" alt=""></a></figure>
+    <figure class="logo"><a href="{{ url('/') }}"><img src="{{ asset($setting->logo) }}" alt="" style="width: 100%; height:100%;"></a></figure>
 </div>
 <div class="menu-area clearfix">
     <!--Mobile Navigation Toggler-->
